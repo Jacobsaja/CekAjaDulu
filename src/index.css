@@ -1,16 +1,105 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
-  --color-primary: #1e40af; /* Blue 800 */
-  --color-secondary: #3b82f6; /* Blue 500 */
+  --color-primary: #1e40af;
+  --color-secondary: #3b82f6;
 }
 
 :root {
-  background-color: #ffffff;
-  color: #1a1a1a;
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+.dark {
+  color-scheme: dark;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
+  background: radial-gradient(1200px 600px at 20% -10%, rgba(37, 99, 235, 0.08), transparent 45%),
+    radial-gradient(1000px 600px at 120% 20%, rgba(59, 130, 246, 0.06), transparent 55%),
+    #f8fafc;
+  color: #0f172a;
+  transition: background-color 250ms ease, color 250ms ease;
+}
+
+.dark body {
+  background: radial-gradient(1000px 500px at 15% -5%, rgba(37, 99, 235, 0.22), transparent 45%),
+    radial-gradient(1000px 500px at 100% 20%, rgba(14, 165, 233, 0.14), transparent 55%),
+    #020617;
+  color: #f8fafc;
+}
+
+@layer utilities {
+  .btn-glow {
+    position: relative;
+  }
+
+  .btn-glow::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 0.75rem;
+    box-shadow: 0 0 0 rgba(37, 99, 235, 0);
+    transition: box-shadow 200ms ease;
+    pointer-events: none;
+  }
+
+  .btn-glow:hover::after {
+    box-shadow: 0 12px 32px rgba(37, 99, 235, 0.35);
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float 6s ease-in-out 3s infinite;
+  }
+
+  .animate-float-slow {
+    animation: float 8s ease-in-out 1s infinite;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.5s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-glow {
+    animation: glow 3s ease-in-out infinite alternate;
+  }
+
+  .animate-slide-up-fade {
+    animation: slideUpFade 0.7s ease-out forwards;
+    opacity: 0;
+  }
+
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(30px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 10px -5px rgba(59, 130, 246, 0.5); }
+  to { box-shadow: 0 0 20px 5px rgba(59, 130, 246, 0.4); }
 }

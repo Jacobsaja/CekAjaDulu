@@ -4,6 +4,7 @@ import TesMinatIntro from './pages/TesMinatIntro';
 import TesMinat from './pages/TesMinat';
 import TesLanjutan from './pages/TesLanjutan';
 import SnbpSimulation from './pages/SnbpSimulation';
+import SnbtRationalization from './pages/SnbtRationalization';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/snbp" element={<SnbpSimulation />} />
+        <Route path="/snbt" element={<SnbtRationalization />} />
         <Route path="/tes-minat" element={<TesMinatIntro />} />
         <Route path="/tes-minat/mulai" element={<TesMinat />} />
         <Route path="/tes-lanjutan" element={<TesLanjutan />} />
