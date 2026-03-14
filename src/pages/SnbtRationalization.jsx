@@ -91,10 +91,10 @@ const SnbtRationalization = () => {
 
     // Analysis steps labels
     const analysisLabels = [
-        "Analyzing SNBT data...",
-        "Fetching major statistics",
-        "Calculating competitiveness",
-        "Comparing scores"
+        "Menganalisis data SNBT...",
+        "Mengambil statistik jurusan",
+        "Menghitung tingkat keketatan",
+        "Membandingkan skor"
     ];
 
     const handleCalculate = () => {
@@ -208,7 +208,7 @@ const SnbtRationalization = () => {
                                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
                                 <input
                                     type="text"
-                                    placeholder="Select University"
+                                    placeholder="Pilih Universitas"
                                     value={selectedUniv ? selectedUniv.nama : searchQuery}
                                     onChange={(e) => {
                                         setSearchQuery(e.target.value);
@@ -258,7 +258,7 @@ const SnbtRationalization = () => {
                                 }}
                                 className="w-full px-5 py-4 rounded-2xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-gray-900 dark:text-white focus:ring-4 focus:ring-blue-50 dark:focus:ring-blue-900/20 focus:border-blue-500 outline-none transition-all appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                             >
-                                <option value="" disabled>Select Major</option>
+                                <option value="" disabled>Pilih Jurusan</option>
                                 {selectedUniv?.jurusan.map(j => (
                                     <option key={j.kode} value={j.kode}>{j.nama} ({j.jenjang})</option>
                                 ))}
@@ -270,7 +270,7 @@ const SnbtRationalization = () => {
                             <label className="block text-sm font-bold text-gray-700 dark:text-slate-300 ml-1">Skor Tryout Terakhir</label>
                             <input
                                 type="number"
-                                placeholder="Enter your latest UTBK tryout score"
+                                placeholder="Masukkan skor tryout UTBK terakhirmu"
                                 value={utbkScore}
                                 onChange={(e) => setUtbkScore(e.target.value)}
                                 className="w-full px-5 py-4 rounded-2xl border border-gray-200 dark:border-slate-700 bg-transparent focus:bg-white dark:focus:bg-slate-800 text-gray-900 dark:text-white focus:ring-4 focus:ring-blue-50 dark:focus:ring-blue-900/20 focus:border-blue-500 outline-none transition-all"
@@ -386,7 +386,7 @@ const SnbtRationalization = () => {
                                     <div className="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400">
                                         <TrendingUp size={20} />
                                     </div>
-                                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">Peluang Lolos</h3>
+                                <h3 className="text-xl font-bold text-gray-900 dark:text-white">Peluang Lolos</h3>
                                 </div>
                                 <span className={`px-4 py-1.5 rounded-full text-xs font-bold ${status.bg} ${status.color}`}>
                                     {status.text}
@@ -406,11 +406,11 @@ const SnbtRationalization = () => {
                                                 strokeLinecap="round"
                                             />
                                         </svg>
-                                        <div className="absolute flex flex-col items-center">
-                                            <span className="text-4xl font-black text-gray-900 dark:text-white">{animatedChance}%</span>
-                                            <span className="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Estimated</span>
-                                        </div>
+                                    <div className="absolute flex flex-col items-center">
+                                        <span className="text-4xl font-black text-gray-900 dark:text-white">{animatedChance}%</span>
+                                        <span className="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Estimasi</span>
                                     </div>
+                                </div>
                                     <div className="mt-6 w-full max-w-xs">
                                         <div className="h-2 rounded-full bg-gray-100 dark:bg-slate-800 overflow-hidden">
                                             <div
@@ -427,14 +427,14 @@ const SnbtRationalization = () => {
 
                                 <div className="grid grid-cols-2 gap-4">
                                     <div className="p-4 rounded-2xl bg-gray-50 dark:bg-slate-800/50 border border-gray-100 dark:border-slate-800">
-                                        <p className="text-[10px] font-bold text-gray-400 uppercase mb-1">Your Tryout Score</p>
+                                        <p className="text-[10px] font-bold text-gray-400 uppercase mb-1">Skor Tryout Kamu</p>
                                         <p className="text-xl font-black text-gray-900 dark:text-white">{utbkScore}</p>
                                     </div>
                                     <div className="p-4 rounded-2xl bg-gray-50 dark:bg-slate-800/50 border border-gray-100 dark:border-slate-800 relative group">
-                                        <p className="text-[10px] font-bold text-gray-400 uppercase mb-1">Avg Accepted Score</p>
+                                        <p className="text-[10px] font-bold text-gray-400 uppercase mb-1">Rata-rata Skor Diterima</p>
                                         <p className="text-xl font-black text-gray-300 dark:text-slate-700 italic">???</p>
                                         <div className="absolute inset-0 flex items-center justify-center bg-gray-50/90 dark:bg-slate-800/90 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl">
-                                            <span className="text-[10px] font-bold text-blue-600 dark:text-blue-400 text-center px-2">Data coming soon!</span>
+                                            <span className="text-[10px] font-bold text-blue-600 dark:text-blue-400 text-center px-2">Data segera hadir!</span>
                                         </div>
                                     </div>
                                 </div>
@@ -442,7 +442,7 @@ const SnbtRationalization = () => {
                                 <div className="p-4 bg-blue-50/50 dark:bg-blue-900/10 rounded-2xl border border-blue-100/50 dark:border-blue-900/30 flex gap-3">
                                     <Info size={16} className="text-blue-500 shrink-0 mt-0.5" />
                                     <p className="text-xs text-blue-700/80 dark:text-blue-400/80 italic leading-relaxed">
-                                        Historical distribution analysis feature coming soon. Keep your focus on practice!
+                                        Fitur analisis distribusi historis segera hadir. Tetap fokus berlatih ya!
                                     </p>
                                 </div>
                             </div>
@@ -451,15 +451,15 @@ const SnbtRationalization = () => {
 
                     {/* Card 3: Alternative Majors */}
                     <div className="mt-8 bg-white dark:bg-slate-900 rounded-[2.5rem] border border-gray-100 dark:border-slate-800 shadow-xl p-8 md:p-10 animate-slide-up-fade delay-200">
-                            <div className="flex items-center gap-4 mb-10">
-                                <div className="w-10 h-10 rounded-xl bg-orange-50 dark:bg-orange-900/30 flex items-center justify-center text-orange-600 dark:text-orange-400">
-                                    <CheckCircle2 size={20} />
-                                </div>
-                                <div>
-                                <h3 className="text-xl font-bold text-gray-900 dark:text-white">Alternative Majors With Similar or Lower Competitiveness</h3>
-                                <p className="text-sm text-gray-500 dark:text-slate-500">Pilihan dengan tingkat keketatan setara atau lebih rendah</p>
-                                </div>
+                        <div className="flex items-center gap-4 mb-10">
+                            <div className="w-10 h-10 rounded-xl bg-orange-50 dark:bg-orange-900/30 flex items-center justify-center text-orange-600 dark:text-orange-400">
+                                <CheckCircle2 size={20} />
                             </div>
+                            <div>
+                                <h3 className="text-xl font-bold text-gray-900 dark:text-white">Alternatif Jurusan Sejenis</h3>
+                                <p className="text-sm text-gray-500 dark:text-slate-500">Jurusan yang sama di universitas lain (maksimal 3)</p>
+                            </div>
+                        </div>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                             {alternatives.map((alt) => (
@@ -473,7 +473,7 @@ const SnbtRationalization = () => {
                                     <div className="flex items-center justify-between pt-4 border-t border-gray-50 dark:border-slate-800">
                                         <div className="flex items-center gap-1.5 grayscale group-hover:grayscale-0 transition-all">
                                             <AlertCircle size={14} className="text-orange-500" />
-                                            <span className="text-xs font-bold text-gray-500 dark:text-slate-400">Ratio 1 : {Math.round(alt.peminat_2025 / alt.daya_tampung_2026)}</span>
+                                            <span className="text-xs font-bold text-gray-500 dark:text-slate-400">Rasio 1 : {Math.round(alt.peminat_2025 / alt.daya_tampung_2026)}</span>
                                         </div>
                                         <div className={`w-2 h-2 rounded-full ${Math.round(alt.peminat_2025 / alt.daya_tampung_2026) < 10 ? 'bg-green-500' : 'bg-yellow-500'}`} />
                                     </div>

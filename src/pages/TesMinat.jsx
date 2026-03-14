@@ -111,31 +111,31 @@ export default function TesMinat() {
 
     if (isFinished && results) {
         return (
-            <div className="min-h-screen bg-gray-50/50 py-24 px-6">
+            <div className="min-h-screen bg-gray-50/50 dark:bg-slate-950 py-24 px-6">
                 <ResultSection {...results} />
             </div>
         );
     }
 
     return (
-        <div className="min-h-screen bg-gray-50/50 flex flex-col">
-            <nav className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md border-b border-gray-100 z-50">
+        <div className="min-h-screen bg-gray-50/50 dark:bg-slate-950 flex flex-col">
+            <nav className="fixed top-0 left-0 right-0 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-gray-100 dark:border-slate-800 z-50">
                 <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
                     <button
                         onClick={() => navigate('/tes-minat')}
-                        className="text-gray-500 hover:text-blue-700 flex items-center gap-1 font-semibold text-sm transition-colors"
+                        className="text-gray-500 dark:text-slate-300 hover:text-blue-700 dark:hover:text-blue-400 flex items-center gap-1 font-semibold text-sm transition-colors"
                     >
                         <ChevronLeft size={20} />
                         Kembali
                     </button>
-                    <div className="text-blue-800 font-bold text-lg">Cekadu <span className="text-gray-300 font-normal">|</span> Tes Minat</div>
+                    <div className="text-blue-800 dark:text-blue-400 font-bold text-lg">Cekadu <span className="text-gray-300 dark:text-slate-600 font-normal">|</span> Tes Minat</div>
                     <div className="flex items-center gap-4">
                         <div className="flex gap-1">
                             {[0, 1].map(p => (
-                                <div key={p} className={`w-2 h-2 rounded-full ${phase >= p ? 'bg-blue-600' : 'bg-gray-200'}`} />
+                                <div key={p} className={`w-2 h-2 rounded-full ${phase >= p ? 'bg-blue-600' : 'bg-gray-200 dark:bg-slate-700'}`} />
                             ))}
                         </div>
-                        <div className="w-16 md:w-24 h-2 bg-gray-100 rounded-full overflow-hidden hidden sm:block">
+                        <div className="w-16 md:w-24 h-2 bg-gray-100 dark:bg-slate-800 rounded-full overflow-hidden hidden sm:block">
                             <div
                                 className="h-full bg-blue-600 transition-all duration-300"
                                 style={{ width: `${(answeredCount / totalQuestions) * 100}%` }}
@@ -157,12 +157,12 @@ export default function TesMinat() {
                 />
             </main>
 
-            <footer className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 p-6 md:px-12 z-40">
+            <footer className="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-gray-100 dark:border-slate-800 p-6 md:px-12 z-40">
                 <div className="max-w-4xl mx-auto flex items-center justify-between gap-4">
                     <button
                         onClick={handlePrevious}
                         disabled={currentIndex === 0 && phase === 0}
-                        className={`flex items-center gap-2 font-bold transition-all ${currentIndex === 0 && phase === 0 ? 'text-gray-200 cursor-not-allowed' : 'text-gray-500 hover:text-blue-700'
+                        className={`flex items-center gap-2 font-bold transition-all ${currentIndex === 0 && phase === 0 ? 'text-gray-200 dark:text-slate-700 cursor-not-allowed' : 'text-gray-500 dark:text-slate-300 hover:text-blue-700 dark:hover:text-blue-400'
                             }`}
                     >
                         <ChevronLeft size={20} />
@@ -174,9 +174,9 @@ export default function TesMinat() {
                             <button
                                 onClick={calculateResults}
                                 disabled={!isAllAnswered}
-                                className={`flex items-center gap-2 px-8 py-4 rounded-2xl font-bold bg-blue-700 text-white shadow-xl shadow-blue-700/20 transform active:scale-95 transition-all ${!isAllAnswered
+                                className={`flex items-center gap-2 px-8 py-4 rounded-2xl font-bold bg-blue-700 dark:bg-blue-600 text-white shadow-xl shadow-blue-700/20 dark:shadow-blue-900/40 transform active:scale-95 transition-all ${!isAllAnswered
                                     ? 'opacity-50 grayscale cursor-not-allowed'
-                                    : 'hover:bg-blue-800 hover:-translate-y-1'
+                                    : 'hover:bg-blue-800 dark:hover:bg-blue-500 hover:-translate-y-1'
                                     }`}
                             >
                                 <Send size={18} />
@@ -187,8 +187,8 @@ export default function TesMinat() {
                                 onClick={handleNext}
                                 disabled={phase === 0 && !prefAnswers[currentQuestion.id]}
                                 className={`flex items-center gap-2 px-8 py-4 rounded-2xl font-bold transition-all ${phase === 0 && !prefAnswers[currentQuestion.id]
-                                    ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                                    : 'bg-white border border-gray-200 text-gray-700 hover:border-blue-600 hover:text-blue-600 shadow-sm'
+                                    ? 'bg-gray-100 dark:bg-slate-800 text-gray-400 dark:text-slate-500 cursor-not-allowed'
+                                    : 'bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-700 text-gray-700 dark:text-slate-300 hover:border-blue-600 hover:text-blue-600 dark:hover:text-blue-400 shadow-sm'
                                     }`}
                             >
                                 <span className="hidden sm:inline">Berikutnya</span>
