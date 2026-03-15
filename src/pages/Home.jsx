@@ -39,9 +39,12 @@ const SelectionModal = ({ isOpen, onClose }) => {
                             </div>
                             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Jalur SNBP</h3>
                             <p className="text-sm text-gray-600 dark:text-gray-400 mb-6 font-medium leading-relaxed">Simulasi berdasarkan nilai rapor dan portofolio akademik sekolah.</p>
-                            <div className="flex items-center gap-2 text-blue-700 dark:text-blue-400 font-bold text-sm">
-                                <span>Mulai Cek</span>
-                                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                            <div className="flex flex-col gap-2">
+                                <div className="flex items-center gap-2 text-blue-700 dark:text-blue-400 font-bold text-sm">
+                                    <span>Mulai Cek</span>
+                                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                                </div>
+                                <span className="text-[10px] uppercase tracking-widest font-bold text-gray-400 dark:text-slate-500">(Dalam tahap pengembangan)</span>
                             </div>
                         </button>
 
