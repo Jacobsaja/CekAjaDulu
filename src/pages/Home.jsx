@@ -143,7 +143,7 @@ export default function Home() {
                                 <div key={i} className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-900 bg-gray-200 dark:bg-gray-600" />
                             ))}
                         </div>
-                        <span>Sudah digunakan oleh 10.000+ siswa tahun ini</span>
+                        <span>Sudah digunakan oleh 1 siswa tahun ini</span>
                     </div>
                 </div>
                 <div className="relative animate-float-slow">

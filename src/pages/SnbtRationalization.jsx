@@ -21,11 +21,11 @@ const useCountUp = (end, duration = 1000, startTrigger = false) => {
         const step = (timestamp) => {
             if (!startTime) startTime = timestamp;
             const progress = Math.min((timestamp - startTime) / duration, 1);
-            
+
             // Easing function: easeOutExpo
             const easeOutVal = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
             const currentCount = Math.floor(easeOutVal * end);
-            
+
             setCount(currentCount);
             countRef.current = currentCount;
 
@@ -83,7 +83,7 @@ const SnbtRationalization = () => {
     // Filtering universities
     const filteredUnivs = useMemo(() => {
         if (!searchQuery) return allUniversities;
-        return allUniversities.filter(u => 
+        return allUniversities.filter(u =>
             u.nama.toLowerCase().includes(searchQuery.toLowerCase()) ||
             u.id.toLowerCase().includes(searchQuery.toLowerCase())
         ).slice(0, 10);
@@ -102,7 +102,7 @@ const SnbtRationalization = () => {
             alert("Harap lengkapi semua data!");
             return;
         }
-        
+
         setIsAnalyzing(true);
         setShowResults(false);
         setAnalysisStep(0);
@@ -149,13 +149,13 @@ const SnbtRationalization = () => {
     );
     const peminatCount = useCountUp(selectedMajor?.peminat_2025 ?? 0, 1200, showResults);
     const dayaCount = useCountUp(selectedMajor?.daya_tampung_2026 ?? 0, 1200, showResults);
-    
+
     // Alternative majors logic (same major name, different universities; max 3)
     const alternatives = useMemo(() => {
         if (!selectedMajor) return [];
         const targetName = selectedMajor.nama.trim().toLowerCase();
         const targetJenjang = selectedMajor.jenjang?.trim().toLowerCase();
-        
+
         let allMajors = [];
         allUniversities.forEach(u => {
             u.jurusan.forEach(j => {
@@ -167,7 +167,7 @@ const SnbtRationalization = () => {
                 }
             });
         });
-        
+
         return allMajors
             .sort((a, b) => (a.peminat_2025 / a.daya_tampung_2026) - (b.peminat_2025 / b.daya_tampung_2026))
             .slice(0, 3);
@@ -222,7 +222,7 @@ const SnbtRationalization = () => {
                                 />
                                 <ChevronDown className={`absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} size={18} />
                             </div>
-                            
+
                             {isDropdownOpen && !selectedUniv && (
                                 <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-slate-800 border border-gray-100 dark:border-slate-700 rounded-2xl shadow-xl z-50 max-h-64 overflow-y-auto overflow-x-hidden animate-in fade-in slide-in-from-top-2 duration-200">
                                     {filteredUnivs.length > 0 ? (
@@ -309,8 +309,8 @@ const SnbtRationalization = () => {
                                 />
                             </div>
                             {analysisLabels.map((label, idx) => (
-                                <div 
-                                    key={idx} 
+                                <div
+                                    key={idx}
                                     className={`flex items-center gap-3 transition-all duration-500 ${analysisStep >= idx ? 'opacity-100' : 'opacity-0 translate-y-2'}`}
                                 >
                                     {analysisStep > idx ? (
@@ -340,7 +340,7 @@ const SnbtRationalization = () => {
                                 </div>
                                 <h3 className="text-xl font-bold text-gray-900 dark:text-white">Statistik Jurusan</h3>
                             </div>
-                            
+
                             <div className="grid grid-cols-1 gap-8">
                                 <div className="p-6 rounded-3xl bg-gray-50 dark:bg-slate-800/50 flex items-center justify-between group hover:bg-blue-50/50 dark:hover:bg-blue-900/20 transition-colors">
                                     <div>
@@ -352,10 +352,11 @@ const SnbtRationalization = () => {
                                             </span>
                                         </div>
                                         <p className="text-[10px] text-gray-400 mt-2">peminat_2025 / daya_tampung_2026</p>
+                                        <p className="text-[10px] text-gray-400 mt-1">SC: snpmb.id/utbk-snbt/daftar-ptn-snbt</p>
                                     </div>
                                     <Info size={20} className="text-gray-300 group-hover:text-blue-400 transition-colors" />
                                 </div>
-                                
+
                                 <div className="grid grid-cols-2 gap-6">
                                     <div className="space-y-1">
                                         <p className="text-xs font-bold text-gray-500 dark:text-slate-500 uppercase tracking-wider">Peminat 2025</p>
@@ -386,7 +387,7 @@ const SnbtRationalization = () => {
                                     <div className="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400">
                                         <TrendingUp size={20} />
                                     </div>
-                                <h3 className="text-xl font-bold text-gray-900 dark:text-white">Peluang Lolos</h3>
+                                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">Peluang Lolos</h3>
                                 </div>
                                 <span className={`px-4 py-1.5 rounded-full text-xs font-bold ${status.bg} ${status.color}`}>
                                     {status.text}
@@ -398,19 +399,19 @@ const SnbtRationalization = () => {
                                     <div className="relative w-40 h-40 flex items-center justify-center">
                                         <svg className="w-full h-full -rotate-90">
                                             <circle cx="80" cy="80" r="70" fill="none" stroke="currentColor" strokeWidth="12" className="text-gray-100 dark:text-slate-800" />
-                                            <circle 
-                                                cx="80" cy="80" r="70" fill="none" stroke="currentColor" strokeWidth="12" 
-                                                strokeDasharray={440} 
+                                            <circle
+                                                cx="80" cy="80" r="70" fill="none" stroke="currentColor" strokeWidth="12"
+                                                strokeDasharray={440}
                                                 strokeDashoffset={440 - (440 * animatedChance) / 100}
                                                 className={`${status.color} transition-all duration-[1500ms] ease-out`}
                                                 strokeLinecap="round"
                                             />
                                         </svg>
-                                    <div className="absolute flex flex-col items-center">
-                                        <span className="text-4xl font-black text-gray-900 dark:text-white">{animatedChance}%</span>
-                                        <span className="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Estimasi</span>
+                                        <div className="absolute flex flex-col items-center">
+                                            <span className="text-4xl font-black text-gray-900 dark:text-white">{animatedChance}%</span>
+                                            <span className="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Estimasi</span>
+                                        </div>
                                     </div>
-                                </div>
                                     <div className="mt-6 w-full max-w-xs">
                                         <div className="h-2 rounded-full bg-gray-100 dark:bg-slate-800 overflow-hidden">
                                             <div
@@ -457,19 +458,19 @@ const SnbtRationalization = () => {
                             </div>
                             <div>
                                 <h3 className="text-xl font-bold text-gray-900 dark:text-white">Alternatif Jurusan Sejenis</h3>
-                                <p className="text-sm text-gray-500 dark:text-slate-500">Jurusan yang sama di universitas lain (maksimal 3)</p>
+                                <p className="text-sm text-gray-500 dark:text-slate-500">Jurusan yang sama di universitas lain</p>
                             </div>
                         </div>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                             {alternatives.map((alt) => (
-                                <div 
-                                    key={alt.kode} 
+                                <div
+                                    key={alt.kode}
                                     className="p-6 rounded-3xl border border-gray-100 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-blue-300 dark:hover:border-blue-600 hover:shadow-xl hover:shadow-blue-900/5 hover:-translate-y-1.5 transition-all duration-300 group"
                                 >
                                     <p className="text-[10px] font-black text-blue-600 dark:text-blue-400 uppercase tracking-widest mb-1">{alt.univName}</p>
                                     <h4 className="font-bold text-gray-800 dark:text-white mb-4 line-clamp-1">{alt.nama}</h4>
-                                    
+
                                     <div className="flex items-center justify-between pt-4 border-t border-gray-50 dark:border-slate-800">
                                         <div className="flex items-center gap-1.5 grayscale group-hover:grayscale-0 transition-all">
                                             <AlertCircle size={14} className="text-orange-500" />
