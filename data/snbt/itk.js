@@ -11,7 +11,7 @@ export const itk = {
       jenjang: "S1",
       daya_tampung_2026: 24,
       peminat_2025: 19,
-      nilai_min_utbk: null
+      nilai_min_utbk: 487.65
     },
     {
       no: 2,
@@ -20,7 +20,7 @@ export const itk = {
       jenjang: "S1",
       daya_tampung_2026: 24,
       peminat_2025: 26,
-      nilai_min_utbk: null
+      nilai_min_utbk: 491.54
     },
     {
       no: 3,
@@ -29,7 +29,7 @@ export const itk = {
       jenjang: "S1",
       daya_tampung_2026: 70,
       peminat_2025: 430,
-      nilai_min_utbk: null
+      nilai_min_utbk: 534.63
     },
     {
       no: 4,
@@ -38,7 +38,7 @@ export const itk = {
       jenjang: "S1",
       daya_tampung_2026: 75,
       peminat_2025: 275,
-      nilai_min_utbk: null
+      nilai_min_utbk: 532.02
     },
     {
       no: 5,
@@ -47,7 +47,7 @@ export const itk = {
       jenjang: "S1",
       daya_tampung_2026: 70,
       peminat_2025: 137,
-      nilai_min_utbk: null
+      nilai_min_utbk: 513.79
     },
     {
       no: 6,
@@ -56,7 +56,7 @@ export const itk = {
       jenjang: "S1",
       daya_tampung_2026: 65,
       peminat_2025: 257,
-      nilai_min_utbk: null
+      nilai_min_utbk: 530.38
     },
     {
       no: 7,
@@ -65,7 +65,7 @@ export const itk = {
       jenjang: "S1",
       daya_tampung_2026: 85,
       peminat_2025: 307,
-      nilai_min_utbk: null
+      nilai_min_utbk: 549.61
     },
     {
       no: 8,
@@ -74,7 +74,7 @@ export const itk = {
       jenjang: "S1",
       daya_tampung_2026: 75,
       peminat_2025: 224,
-      nilai_min_utbk: null
+      nilai_min_utbk: 531.49
     },
     {
       no: 9,
@@ -83,7 +83,7 @@ export const itk = {
       jenjang: "S1",
       daya_tampung_2026: 50,
       peminat_2025: 141,
-      nilai_min_utbk: null
+      nilai_min_utbk: 511.99
     },
     {
       no: 10,
@@ -92,7 +92,7 @@ export const itk = {
       jenjang: "S1",
       daya_tampung_2026: 75,
       peminat_2025: 289,
-      nilai_min_utbk: null
+      nilai_min_utbk: 559.21
     },
     {
       no: 11,
@@ -101,7 +101,7 @@ export const itk = {
       jenjang: "S1",
       daya_tampung_2026: 50,
       peminat_2025: 446,
-      nilai_min_utbk: null
+      nilai_min_utbk: 549.68
     },
     {
       no: 12,
@@ -110,7 +110,7 @@ export const itk = {
       jenjang: "S1",
       daya_tampung_2026: 79,
       peminat_2025: 362,
-      nilai_min_utbk: null
+      nilai_min_utbk: 559.96
     },
     {
       no: 13,
@@ -119,7 +119,7 @@ export const itk = {
       jenjang: "S1",
       daya_tampung_2026: 55,
       peminat_2025: 317,
-      nilai_min_utbk: null
+      nilai_min_utbk: 530.58
     },
     {
       no: 14,
@@ -128,7 +128,7 @@ export const itk = {
       jenjang: "S1",
       daya_tampung_2026: 40,
       peminat_2025: 121,
-      nilai_min_utbk: null
+      nilai_min_utbk: 504.66
     },
     {
       no: 15,
@@ -137,7 +137,7 @@ export const itk = {
       jenjang: "S1",
       daya_tampung_2026: 50,
       peminat_2025: 126,
-      nilai_min_utbk: null
+      nilai_min_utbk: 529.74
     },
     {
       no: 16,
@@ -146,7 +146,7 @@ export const itk = {
       jenjang: "S1",
       daya_tampung_2026: 40,
       peminat_2025: 49,
-      nilai_min_utbk: null
+      nilai_min_utbk: 501.98
     },
     {
       no: 17,
@@ -155,7 +155,7 @@ export const itk = {
       jenjang: "S1",
       daya_tampung_2026: 45,
       peminat_2025: 73,
-      nilai_min_utbk: null
+      nilai_min_utbk: 500.04
     },
     {
       no: 18,
@@ -164,7 +164,7 @@ export const itk = {
       jenjang: "S1",
       daya_tampung_2026: 65,
       peminat_2025: 332,
-      nilai_min_utbk: null
+      nilai_min_utbk: 539.11
     },
     {
       no: 19,
@@ -173,7 +173,7 @@ export const itk = {
       jenjang: "S1",
       daya_tampung_2026: 50,
       peminat_2025: 516,
-      nilai_min_utbk: null
+      nilai_min_utbk: 559.96
     },
     {
       no: 20,
@@ -182,7 +182,7 @@ export const itk = {
       jenjang: "S1",
       daya_tampung_2026: 55,
       peminat_2025: 135,
-      nilai_min_utbk: null
+      nilai_min_utbk: 519.12
     },
     {
       no: 21,
@@ -191,7 +191,7 @@ export const itk = {
       jenjang: "S1",
       daya_tampung_2026: 60,
       peminat_2025: 115,
-      nilai_min_utbk: null
+      nilai_min_utbk: 516.5
     },
     {
       no: 22,
@@ -200,7 +200,7 @@ export const itk = {
       jenjang: "S1",
       daya_tampung_2026: 45,
       peminat_2025: 69,
-      nilai_min_utbk: null
+      nilai_min_utbk: 504.89
     },
     {
       no: 23,

@@ -431,19 +431,28 @@ const SnbtRationalization = () => {
                                         <p className="text-[10px] font-bold text-gray-400 uppercase mb-1">Skor Tryout Kamu</p>
                                         <p className="text-xl font-black text-gray-900 dark:text-white">{utbkScore}</p>
                                     </div>
-                                    <div className="p-4 rounded-2xl bg-gray-50 dark:bg-slate-800/50 border border-gray-100 dark:border-slate-800 relative group">
-                                        <p className="text-[10px] font-bold text-gray-400 uppercase mb-1">Rata-rata Skor Diterima</p>
-                                        <p className="text-xl font-black text-gray-300 dark:text-slate-700 italic">???</p>
-                                        <div className="absolute inset-0 flex items-center justify-center bg-gray-50/90 dark:bg-slate-800/90 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl">
-                                            <span className="text-[10px] font-bold text-blue-600 dark:text-blue-400 text-center px-2">Data segera hadir!</span>
+                                    {selectedMajor?.nilai_min_utbk ? (
+                                        <div className="p-4 rounded-2xl bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800/50 border-dashed">
+                                            <p className="text-[10px] font-bold text-blue-500 dark:text-blue-400 uppercase mb-1">Rata-rata Skor Diterima</p>
+                                            <p className="text-xl font-black text-blue-700 dark:text-blue-300">{selectedMajor.nilai_min_utbk}</p>
                                         </div>
-                                    </div>
+                                    ) : (
+                                        <div className="p-4 rounded-2xl bg-gray-50 dark:bg-slate-800/50 border border-gray-100 dark:border-slate-800 relative group">
+                                            <p className="text-[10px] font-bold text-gray-400 uppercase mb-1">Rata-rata Skor Diterima</p>
+                                            <p className="text-xl font-black text-gray-300 dark:text-slate-700 italic">???</p>
+                                            <div className="absolute inset-0 flex items-center justify-center bg-gray-50/90 dark:bg-slate-800/90 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl">
+                                                <span className="text-[10px] font-bold text-gray-500 dark:text-gray-400 text-center px-2">Data tidak tersedia</span>
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
 
                                 <div className="p-4 bg-blue-50/50 dark:bg-blue-900/10 rounded-2xl border border-blue-100/50 dark:border-blue-900/30 flex gap-3">
                                     <Info size={16} className="text-blue-500 shrink-0 mt-0.5" />
                                     <p className="text-xs text-blue-700/80 dark:text-blue-400/80 italic leading-relaxed">
-                                        Fitur analisis distribusi historis segera hadir. Tetap fokus berlatih ya!
+                                        {selectedMajor?.nilai_min_utbk
+                                            ? "Peluang dihitung berdasarkan perbandingan skormu dengan histori rata-rata UTBK di tahun sebelumnya, dikurangi rasio keketatan."
+                                            : "Peluang dihitung menggunakan estimasi rasio keketatan karena data skor rata-rata jurusan ini belum tersedia."}
                                     </p>
                                 </div>
                             </div>

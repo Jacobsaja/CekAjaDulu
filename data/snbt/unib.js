@@ -11,7 +11,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 60,
       peminat_2025: 232,
-      nilai_min_utbk: null
+      nilai_min_utbk: 588.41
     },
     {
       no: 2,
@@ -20,7 +20,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 58,
       peminat_2025: 188,
-      nilai_min_utbk: null
+      nilai_min_utbk: 583.29
     },
     {
       no: 3,
@@ -29,7 +29,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 80,
       peminat_2025: 127,
-      nilai_min_utbk: null
+      nilai_min_utbk: 536.22
     },
     {
       no: 4,
@@ -38,7 +38,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 65,
       peminat_2025: 303,
-      nilai_min_utbk: null
+      nilai_min_utbk: 603.84
     },
     {
       no: 5,
@@ -47,7 +47,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 60,
       peminat_2025: 234,
-      nilai_min_utbk: null
+      nilai_min_utbk: 589.58
     },
     {
       no: 6,
@@ -56,7 +56,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 45,
       peminat_2025: 47,
-      nilai_min_utbk: null
+      nilai_min_utbk: 511.09
     },
     {
       no: 7,
@@ -65,7 +65,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 40,
       peminat_2025: 161,
-      nilai_min_utbk: null
+      nilai_min_utbk: 580.51
     },
     {
       no: 8,
@@ -74,7 +74,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 40,
       peminat_2025: 48,
-      nilai_min_utbk: null
+      nilai_min_utbk: 514.12
     },
     {
       no: 9,
@@ -83,7 +83,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 50,
       peminat_2025: 148,
-      nilai_min_utbk: null
+      nilai_min_utbk: 562.11
     },
     {
       no: 10,
@@ -92,7 +92,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 40,
       peminat_2025: 45,
-      nilai_min_utbk: null
+      nilai_min_utbk: 495.62
     },
     {
       no: 11,
@@ -101,7 +101,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 40,
       peminat_2025: 29,
-      nilai_min_utbk: null
+      nilai_min_utbk: 488.13
     },
     {
       no: 12,
@@ -110,7 +110,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 48,
       peminat_2025: 84,
-      nilai_min_utbk: null
+      nilai_min_utbk: 523.97
     },
     {
       no: 13,
@@ -119,7 +119,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 48,
       peminat_2025: 37,
-      nilai_min_utbk: null
+      nilai_min_utbk: 493.35
     },
     {
       no: 14,
@@ -128,7 +128,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 60,
       peminat_2025: 639,
-      nilai_min_utbk: null
+      nilai_min_utbk: 650.87
     },
     {
       no: 15,
@@ -137,7 +137,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 60,
       peminat_2025: 461,
-      nilai_min_utbk: null
+      nilai_min_utbk: 614.52
     },
     {
       no: 16,
@@ -146,7 +146,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 50,
       peminat_2025: 220,
-      nilai_min_utbk: null
+      nilai_min_utbk: 581.59
     },
     {
       no: 17,
@@ -155,7 +155,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 50,
       peminat_2025: 206,
-      nilai_min_utbk: null
+      nilai_min_utbk: 561.55
     },
     {
       no: 18,
@@ -164,7 +164,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 40,
       peminat_2025: 115,
-      nilai_min_utbk: null
+      nilai_min_utbk: 517.54
     },
     {
       no: 19,
@@ -173,7 +173,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 40,
       peminat_2025: 893,
-      nilai_min_utbk: null
+      nilai_min_utbk: 659.1
     },
     {
       no: 20,
@@ -182,7 +182,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 25,
       peminat_2025: 64,
-      nilai_min_utbk: null
+      nilai_min_utbk: 501.81
     },
     {
       no: 21,
@@ -191,7 +191,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 40,
       peminat_2025: 126,
-      nilai_min_utbk: null
+      nilai_min_utbk: 526.88
     },
     {
       no: 22,
@@ -200,7 +200,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 28,
       peminat_2025: 118,
-      nilai_min_utbk: null
+      nilai_min_utbk: 534.4
     },
     {
       no: 23,
@@ -209,7 +209,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 45,
       peminat_2025: 363,
-      nilai_min_utbk: null
+      nilai_min_utbk: 614.09
     },
     {
       no: 24,
@@ -218,7 +218,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 25,
       peminat_2025: 38,
-      nilai_min_utbk: null
+      nilai_min_utbk: 505.49
     },
     {
       no: 25,
@@ -227,7 +227,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 40,
       peminat_2025: 780,
-      nilai_min_utbk: null
+      nilai_min_utbk: 632.12
     },
     {
       no: 26,
@@ -236,7 +236,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 40,
       peminat_2025: 89,
-      nilai_min_utbk: null
+      nilai_min_utbk: 508.9
     },
     {
       no: 27,
@@ -245,7 +245,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 40,
       peminat_2025: 123,
-      nilai_min_utbk: null
+      nilai_min_utbk: 568.56
     },
     {
       no: 28,
@@ -254,7 +254,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 225,
       peminat_2025: 1166,
-      nilai_min_utbk: null
+      nilai_min_utbk: 639.69
     },
     {
       no: 29,
@@ -263,7 +263,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 43,
       peminat_2025: 128,
-      nilai_min_utbk: null
+      nilai_min_utbk: 565.94
     },
     {
       no: 30,
@@ -272,7 +272,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 60,
       peminat_2025: 204,
-      nilai_min_utbk: null
+      nilai_min_utbk: 586.45
     },
     {
       no: 31,
@@ -281,7 +281,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 100,
       peminat_2025: 852,
-      nilai_min_utbk: null
+      nilai_min_utbk: 638.88
     },
     {
       no: 32,
@@ -290,7 +290,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 50,
       peminat_2025: 557,
-      nilai_min_utbk: null
+      nilai_min_utbk: 628.2
     },
     {
       no: 33,
@@ -299,7 +299,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 50,
       peminat_2025: 168,
-      nilai_min_utbk: null
+      nilai_min_utbk: 582.08
     },
     {
       no: 34,
@@ -308,7 +308,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 60,
       peminat_2025: 617,
-      nilai_min_utbk: null
+      nilai_min_utbk: 628.88
     },
     {
       no: 35,
@@ -317,7 +317,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 100,
       peminat_2025: 612,
-      nilai_min_utbk: null
+      nilai_min_utbk: 630.2
     },
     {
       no: 36,
@@ -326,7 +326,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 40,
       peminat_2025: 47,
-      nilai_min_utbk: null
+      nilai_min_utbk: 505.11
     },
     {
       no: 37,
@@ -335,7 +335,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 35,
       peminat_2025: 424,
-      nilai_min_utbk: null
+      nilai_min_utbk: 617.04
     },
     {
       no: 38,
@@ -344,7 +344,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 68,
       peminat_2025: 264,
-      nilai_min_utbk: null
+      nilai_min_utbk: 593.93
     },
     {
       no: 39,
@@ -353,7 +353,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 80,
       peminat_2025: 1061,
-      nilai_min_utbk: null
+      nilai_min_utbk: 639.67
     },
     {
       no: 40,
@@ -362,7 +362,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 45,
       peminat_2025: 193,
-      nilai_min_utbk: null
+      nilai_min_utbk: 583.41
     },
     {
       no: 41,
@@ -371,7 +371,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 50,
       peminat_2025: 297,
-      nilai_min_utbk: null
+      nilai_min_utbk: 593.89
     },
     {
       no: 42,
@@ -380,7 +380,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 40,
       peminat_2025: 502,
-      nilai_min_utbk: null
+      nilai_min_utbk: 618.52
     },
     {
       no: 43,
@@ -389,7 +389,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 38,
       peminat_2025: 156,
-      nilai_min_utbk: null
+      nilai_min_utbk: 563.71
     },
     {
       no: 44,
@@ -398,7 +398,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 40,
       peminat_2025: 108,
-      nilai_min_utbk: null
+      nilai_min_utbk: 535.63
     },
     {
       no: 45,
@@ -407,7 +407,7 @@ export const unib = {
       jenjang: "S1",
       daya_tampung_2026: 33,
       peminat_2025: 78,
-      nilai_min_utbk: null
+      nilai_min_utbk: 514.1
     },
     {
       no: 46,
@@ -461,7 +461,7 @@ export const unib = {
       jenjang: "D3",
       daya_tampung_2026: 45,
       peminat_2025: 1761,
-      nilai_min_utbk: null
+      nilai_min_utbk: 647.69
     },
     {
       no: 52,
@@ -470,7 +470,7 @@ export const unib = {
       jenjang: "D3",
       daya_tampung_2026: 40,
       peminat_2025: 731,
-      nilai_min_utbk: null
+      nilai_min_utbk: 628.74
     },
     {
       no: 53,
@@ -479,7 +479,7 @@ export const unib = {
       jenjang: "D3",
       daya_tampung_2026: 60,
       peminat_2025: 982,
-      nilai_min_utbk: null
+      nilai_min_utbk: 638.08
     },
     {
       no: 54,
@@ -488,7 +488,7 @@ export const unib = {
       jenjang: "D3",
       daya_tampung_2026: 60,
       peminat_2025: 1623,
-      nilai_min_utbk: null
+      nilai_min_utbk: 644.14
     },
     {
       no: 55,
@@ -497,7 +497,7 @@ export const unib = {
       jenjang: "D3",
       daya_tampung_2026: 53,
       peminat_2025: 1324,
-      nilai_min_utbk: null
+      nilai_min_utbk: 642.53
     }
   ]
 };

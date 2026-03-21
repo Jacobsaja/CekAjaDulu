@@ -173,7 +173,7 @@ export const up = {
       jenjang: "D4",
       daya_tampung_2026: 10,
       peminat_2025: 111,
-      nilai_min_utbk: null
+      nilai_min_utbk: 687.82
     },
     {
       no: 20,

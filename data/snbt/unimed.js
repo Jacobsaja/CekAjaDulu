@@ -11,7 +11,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 133,
       peminat_2025: 467,
-      nilai_min_utbk: null
+      nilai_min_utbk: 541.03
     },
     {
       no: 2,
@@ -20,7 +20,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 144,
       peminat_2025: 491,
-      nilai_min_utbk: null
+      nilai_min_utbk: 538.91
     },
     {
       no: 3,
@@ -29,7 +29,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 136,
       peminat_2025: 166,
-      nilai_min_utbk: null
+      nilai_min_utbk: 517.81
     },
     {
       no: 4,
@@ -38,7 +38,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 179,
       peminat_2025: 217,
-      nilai_min_utbk: null
+      nilai_min_utbk: 524.81
     },
     {
       no: 5,
@@ -47,7 +47,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 94,
       peminat_2025: 67,
-      nilai_min_utbk: null
+      nilai_min_utbk: 512.68
     },
     {
       no: 6,
@@ -56,7 +56,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 102,
       peminat_2025: 227,
-      nilai_min_utbk: null
+      nilai_min_utbk: 520.74
     },
     {
       no: 7,
@@ -65,7 +65,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 90,
       peminat_2025: 162,
-      nilai_min_utbk: null
+      nilai_min_utbk: 504.39
     },
     {
       no: 8,
@@ -74,7 +74,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 86,
       peminat_2025: 186,
-      nilai_min_utbk: null
+      nilai_min_utbk: 514.4
     },
     {
       no: 9,
@@ -83,7 +83,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 118,
       peminat_2025: 294,
-      nilai_min_utbk: null
+      nilai_min_utbk: 523.57
     },
     {
       no: 10,
@@ -92,7 +92,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 154,
       peminat_2025: 185,
-      nilai_min_utbk: null
+      nilai_min_utbk: 517.33
     },
     {
       no: 11,
@@ -101,7 +101,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 90,
       peminat_2025: 183,
-      nilai_min_utbk: null
+      nilai_min_utbk: 514.56
     },
     {
       no: 12,
@@ -110,7 +110,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 66,
       peminat_2025: 104,
-      nilai_min_utbk: null
+      nilai_min_utbk: 493.65
     },
     {
       no: 13,
@@ -119,7 +119,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 102,
       peminat_2025: 147,
-      nilai_min_utbk: null
+      nilai_min_utbk: 512.64
     },
     {
       no: 14,
@@ -128,7 +128,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 106,
       peminat_2025: 1048,
-      nilai_min_utbk: null
+      nilai_min_utbk: 546.23
     },
     {
       no: 15,
@@ -137,7 +137,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 90,
       peminat_2025: 457,
-      nilai_min_utbk: null
+      nilai_min_utbk: 533.57
     },
     {
       no: 16,
@@ -146,7 +146,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 102,
       peminat_2025: 612,
-      nilai_min_utbk: null
+      nilai_min_utbk: 541.15
     },
     {
       no: 17,
@@ -155,7 +155,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 102,
       peminat_2025: 524,
-      nilai_min_utbk: null
+      nilai_min_utbk: 541.6
     },
     {
       no: 18,
@@ -164,7 +164,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 96,
       peminat_2025: 1002,
-      nilai_min_utbk: null
+      nilai_min_utbk: 553.85
     },
     {
       no: 19,
@@ -173,7 +173,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 86,
       peminat_2025: 184,
-      nilai_min_utbk: null
+      nilai_min_utbk: 529.4
     },
     {
       no: 20,
@@ -182,7 +182,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 122,
       peminat_2025: 362,
-      nilai_min_utbk: null
+      nilai_min_utbk: 530.97
     },
     {
       no: 21,
@@ -191,7 +191,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 122,
       peminat_2025: 485,
-      nilai_min_utbk: null
+      nilai_min_utbk: 539.7
     },
     {
       no: 22,
@@ -200,7 +200,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 122,
       peminat_2025: 285,
-      nilai_min_utbk: null
+      nilai_min_utbk: 530.25
     },
     {
       no: 23,
@@ -209,7 +209,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 234,
       peminat_2025: 677,
-      nilai_min_utbk: null
+      nilai_min_utbk: 538.83
     },
     {
       no: 24,
@@ -218,7 +218,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 234,
       peminat_2025: 560,
-      nilai_min_utbk: null
+      nilai_min_utbk: 531.28
     },
     {
       no: 25,
@@ -227,7 +227,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 82,
       peminat_2025: 103,
-      nilai_min_utbk: null
+      nilai_min_utbk: 498.71
     },
     {
       no: 26,
@@ -236,7 +236,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 78,
       peminat_2025: 295,
-      nilai_min_utbk: null
+      nilai_min_utbk: 525.52
     },
     {
       no: 27,
@@ -245,7 +245,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 102,
       peminat_2025: 1008,
-      nilai_min_utbk: null
+      nilai_min_utbk: 555.85
     },
     {
       no: 28,
@@ -254,7 +254,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 90,
       peminat_2025: 969,
-      nilai_min_utbk: null
+      nilai_min_utbk: 551.34
     },
     {
       no: 29,
@@ -263,7 +263,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 168,
       peminat_2025: 966,
-      nilai_min_utbk: null
+      nilai_min_utbk: 549
     },
     {
       no: 30,
@@ -272,7 +272,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 170,
       peminat_2025: 659,
-      nilai_min_utbk: null
+      nilai_min_utbk: 545.71
     },
     {
       no: 31,
@@ -281,7 +281,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 85,
       peminat_2025: 39,
-      nilai_min_utbk: null
+      nilai_min_utbk: 490.54
     },
     {
       no: 32,
@@ -290,7 +290,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 92,
       peminat_2025: 151,
-      nilai_min_utbk: null
+      nilai_min_utbk: 504.15
     },
     {
       no: 33,
@@ -299,7 +299,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 79,
       peminat_2025: 86,
-      nilai_min_utbk: null
+      nilai_min_utbk: 497.72
     },
     {
       no: 34,
@@ -308,7 +308,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 102,
       peminat_2025: 220,
-      nilai_min_utbk: null
+      nilai_min_utbk: 517.51
     },
     {
       no: 35,
@@ -317,7 +317,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 102,
       peminat_2025: 378,
-      nilai_min_utbk: null
+      nilai_min_utbk: 534.22
     },
     {
       no: 36,
@@ -326,7 +326,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 288,
       peminat_2025: 2528,
-      nilai_min_utbk: null
+      nilai_min_utbk: 557.92
     },
     {
       no: 37,
@@ -335,7 +335,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 90,
       peminat_2025: 461,
-      nilai_min_utbk: null
+      nilai_min_utbk: 538.02
     },
     {
       no: 38,
@@ -344,7 +344,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 102,
       peminat_2025: 440,
-      nilai_min_utbk: null
+      nilai_min_utbk: 535.75
     },
     {
       no: 39,
@@ -353,7 +353,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 122,
       peminat_2025: 266,
-      nilai_min_utbk: null
+      nilai_min_utbk: 528.81
     },
     {
       no: 40,
@@ -362,7 +362,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 144,
       peminat_2025: 340,
-      nilai_min_utbk: null
+      nilai_min_utbk: 533.09
     },
     {
       no: 41,
@@ -371,7 +371,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 144,
       peminat_2025: 1059,
-      nilai_min_utbk: null
+      nilai_min_utbk: 549.82
     },
     {
       no: 42,
@@ -380,7 +380,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 78,
       peminat_2025: 249,
-      nilai_min_utbk: null
+      nilai_min_utbk: 519.89
     },
     {
       no: 43,
@@ -389,7 +389,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 78,
       peminat_2025: 406,
-      nilai_min_utbk: null
+      nilai_min_utbk: 536.1
     },
     {
       no: 44,
@@ -398,7 +398,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 78,
       peminat_2025: 179,
-      nilai_min_utbk: null
+      nilai_min_utbk: 521.9
     },
     {
       no: 45,
@@ -407,7 +407,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 110,
       peminat_2025: 126,
-      nilai_min_utbk: null
+      nilai_min_utbk: 509.6
     },
     {
       no: 46,
@@ -416,7 +416,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 118,
       peminat_2025: 160,
-      nilai_min_utbk: null
+      nilai_min_utbk: 516.98
     },
     {
       no: 47,
@@ -425,7 +425,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 90,
       peminat_2025: 413,
-      nilai_min_utbk: null
+      nilai_min_utbk: 538.25
     },
     {
       no: 48,
@@ -434,7 +434,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 43,
       peminat_2025: 24,
-      nilai_min_utbk: null
+      nilai_min_utbk: 489.68
     },
     {
       no: 49,
@@ -443,7 +443,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 78,
       peminat_2025: 378,
-      nilai_min_utbk: null
+      nilai_min_utbk: 535.86
     },
     {
       no: 50,
@@ -452,7 +452,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 78,
       peminat_2025: 607,
-      nilai_min_utbk: null
+      nilai_min_utbk: 545.42
     },
     {
       no: 51,
@@ -461,7 +461,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 78,
       peminat_2025: 340,
-      nilai_min_utbk: null
+      nilai_min_utbk: 529.4
     },
     {
       no: 52,
@@ -470,7 +470,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 80,
       peminat_2025: 208,
-      nilai_min_utbk: null
+      nilai_min_utbk: 527.4
     },
     {
       no: 53,
@@ -479,7 +479,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 80,
       peminat_2025: 260,
-      nilai_min_utbk: null
+      nilai_min_utbk: 522.22
     },
     {
       no: 54,
@@ -488,7 +488,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 30,
       peminat_2025: 66,
-      nilai_min_utbk: null
+      nilai_min_utbk: 487.63
     },
     {
       no: 55,
@@ -497,7 +497,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 30,
       peminat_2025: 291,
-      nilai_min_utbk: null
+      nilai_min_utbk: 488.17
     },
     {
       no: 56,
@@ -506,7 +506,7 @@ export const unimed = {
       jenjang: "S1",
       daya_tampung_2026: 23,
       peminat_2025: 0,
-      nilai_min_utbk: null
+      nilai_min_utbk: 659.01
     },
     {
       no: 57,
@@ -515,7 +515,7 @@ export const unimed = {
       jenjang: "D4",
       daya_tampung_2026: 102,
       peminat_2025: 1152,
-      nilai_min_utbk: null
+      nilai_min_utbk: 554.5
     },
     {
       no: 58,
@@ -524,7 +524,7 @@ export const unimed = {
       jenjang: "D3",
       daya_tampung_2026: 80,
       peminat_2025: 1266,
-      nilai_min_utbk: null
+      nilai_min_utbk: 552.42
     }
   ]
 };

@@ -11,7 +11,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 80,
       peminat_2025: 668,
-      nilai_min_utbk: null
+      nilai_min_utbk: 607.17
     },
     {
       no: 2,
@@ -20,7 +20,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 100,
       peminat_2025: 625,
-      nilai_min_utbk: null
+      nilai_min_utbk: 600.14
     },
     {
       no: 3,
@@ -29,7 +29,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 88,
       peminat_2025: 2074,
-      nilai_min_utbk: null
+      nilai_min_utbk: 756.61
     },
     {
       no: 4,
@@ -38,7 +38,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 63,
       peminat_2025: 1183,
-      nilai_min_utbk: null
+      nilai_min_utbk: 709.05
     },
     {
       no: 5,
@@ -47,7 +47,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 75,
       peminat_2025: 1445,
-      nilai_min_utbk: null
+      nilai_min_utbk: 709.17
     },
     {
       no: 6,
@@ -56,7 +56,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 30,
       peminat_2025: 1065,
-      nilai_min_utbk: null
+      nilai_min_utbk: 716.32
     },
     {
       no: 7,
@@ -65,7 +65,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 50,
       peminat_2025: 226,
-      nilai_min_utbk: null
+      nilai_min_utbk: 546.62
     },
     {
       no: 8,
@@ -74,7 +74,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 50,
       peminat_2025: 204,
-      nilai_min_utbk: null
+      nilai_min_utbk: 527.03
     },
     {
       no: 9,
@@ -83,7 +83,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 50,
       peminat_2025: 126,
-      nilai_min_utbk: null
+      nilai_min_utbk: 523.49
     },
     {
       no: 10,
@@ -92,7 +92,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 50,
       peminat_2025: 80,
-      nilai_min_utbk: null
+      nilai_min_utbk: 500.85
     },
     {
       no: 11,
@@ -101,7 +101,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 50,
       peminat_2025: 662,
-      nilai_min_utbk: null
+      nilai_min_utbk: 643.02
     },
     {
       no: 12,
@@ -110,7 +110,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 160,
       peminat_2025: 522,
-      nilai_min_utbk: null
+      nilai_min_utbk: 600.87
     },
     {
       no: 13,
@@ -119,7 +119,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 60,
       peminat_2025: 884,
-      nilai_min_utbk: null
+      nilai_min_utbk: 643.41
     },
     {
       no: 14,
@@ -128,7 +128,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 70,
       peminat_2025: 1045,
-      nilai_min_utbk: null
+      nilai_min_utbk: 672.31
     },
     {
       no: 15,
@@ -137,7 +137,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 50,
       peminat_2025: 1372,
-      nilai_min_utbk: null
+      nilai_min_utbk: 678.68
     },
     {
       no: 16,
@@ -146,7 +146,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 64,
       peminat_2025: 899,
-      nilai_min_utbk: null
+      nilai_min_utbk: 623.67
     },
     {
       no: 17,
@@ -155,7 +155,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 70,
       peminat_2025: 815,
-      nilai_min_utbk: null
+      nilai_min_utbk: 625.11
     },
     {
       no: 18,
@@ -164,7 +164,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 70,
       peminat_2025: 2024,
-      nilai_min_utbk: null
+      nilai_min_utbk: 754.21
     },
     {
       no: 19,
@@ -173,7 +173,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 56,
       peminat_2025: 341,
-      nilai_min_utbk: null
+      nilai_min_utbk: 565.31
     },
     {
       no: 20,
@@ -182,7 +182,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 49,
       peminat_2025: 463,
-      nilai_min_utbk: null
+      nilai_min_utbk: 559.45
     },
     {
       no: 21,
@@ -191,7 +191,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 48,
       peminat_2025: 989,
-      nilai_min_utbk: null
+      nilai_min_utbk: 690.61
     },
     {
       no: 22,
@@ -200,7 +200,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 52,
       peminat_2025: 888,
-      nilai_min_utbk: null
+      nilai_min_utbk: 680.26
     },
     {
       no: 23,
@@ -209,7 +209,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 55,
       peminat_2025: 215,
-      nilai_min_utbk: null
+      nilai_min_utbk: 554.85
     },
     {
       no: 24,
@@ -218,7 +218,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 50,
       peminat_2025: 179,
-      nilai_min_utbk: null
+      nilai_min_utbk: 533.13
     },
     {
       no: 25,
@@ -227,7 +227,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 55,
       peminat_2025: 131,
-      nilai_min_utbk: null
+      nilai_min_utbk: 516.63
     },
     {
       no: 26,
@@ -236,7 +236,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 35,
       peminat_2025: 551,
-      nilai_min_utbk: null
+      nilai_min_utbk: 622.03
     },
     {
       no: 27,
@@ -245,7 +245,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 52,
       peminat_2025: 1027,
-      nilai_min_utbk: null
+      nilai_min_utbk: 660.56
     },
     {
       no: 28,
@@ -254,7 +254,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 75,
       peminat_2025: 175,
-      nilai_min_utbk: null
+      nilai_min_utbk: 534.39
     },
     {
       no: 29,
@@ -263,7 +263,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 22,
       peminat_2025: 132,
-      nilai_min_utbk: null
+      nilai_min_utbk: 529.56
     },
     {
       no: 30,
@@ -272,7 +272,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 40,
       peminat_2025: 263,
-      nilai_min_utbk: null
+      nilai_min_utbk: 552.27
     },
     {
       no: 31,
@@ -281,7 +281,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 20,
       peminat_2025: 535,
-      nilai_min_utbk: null
+      nilai_min_utbk: 599.94
     },
     {
       no: 32,
@@ -290,7 +290,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 65,
       peminat_2025: 489,
-      nilai_min_utbk: null
+      nilai_min_utbk: 602.22
     },
     {
       no: 33,
@@ -299,7 +299,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 224,
       peminat_2025: 2248,
-      nilai_min_utbk: null
+      nilai_min_utbk: 751.21
     },
     {
       no: 34,
@@ -308,7 +308,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 50,
       peminat_2025: 129,
-      nilai_min_utbk: null
+      nilai_min_utbk: 518.95
     },
     {
       no: 35,
@@ -317,7 +317,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 45,
       peminat_2025: 262,
-      nilai_min_utbk: null
+      nilai_min_utbk: 566.14
     },
     {
       no: 36,
@@ -326,7 +326,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 40,
       peminat_2025: 199,
-      nilai_min_utbk: null
+      nilai_min_utbk: 572.33
     },
     {
       no: 37,
@@ -335,7 +335,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 90,
       peminat_2025: 1329,
-      nilai_min_utbk: null
+      nilai_min_utbk: 717.41
     },
     {
       no: 38,
@@ -344,7 +344,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 90,
       peminat_2025: 1168,
-      nilai_min_utbk: null
+      nilai_min_utbk: 708.77
     },
     {
       no: 39,
@@ -353,7 +353,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 45,
       peminat_2025: 266,
-      nilai_min_utbk: null
+      nilai_min_utbk: 562.65
     },
     {
       no: 40,
@@ -362,7 +362,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 47,
       peminat_2025: 866,
-      nilai_min_utbk: null
+      nilai_min_utbk: 645.58
     },
     {
       no: 41,
@@ -371,7 +371,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 48,
       peminat_2025: 137,
-      nilai_min_utbk: null
+      nilai_min_utbk: 527.95
     },
     {
       no: 42,
@@ -380,7 +380,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 60,
       peminat_2025: 326,
-      nilai_min_utbk: null
+      nilai_min_utbk: 580.53
     },
     {
       no: 43,
@@ -389,7 +389,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 45,
       peminat_2025: 65,
-      nilai_min_utbk: null
+      nilai_min_utbk: 506.24
     },
     {
       no: 44,
@@ -398,7 +398,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 45,
       peminat_2025: 229,
-      nilai_min_utbk: null
+      nilai_min_utbk: 539.1
     },
     {
       no: 45,
@@ -407,7 +407,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 45,
       peminat_2025: 453,
-      nilai_min_utbk: null
+      nilai_min_utbk: 677.65
     },
     {
       no: 46,
@@ -416,7 +416,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 60,
       peminat_2025: 963,
-      nilai_min_utbk: null
+      nilai_min_utbk: 677.35
     },
     {
       no: 47,
@@ -425,7 +425,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 47,
       peminat_2025: 225,
-      nilai_min_utbk: null
+      nilai_min_utbk: 560.74
     },
     {
       no: 48,
@@ -434,7 +434,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 41,
       peminat_2025: 160,
-      nilai_min_utbk: null
+      nilai_min_utbk: 527.68
     },
     {
       no: 49,
@@ -443,7 +443,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 38,
       peminat_2025: 819,
-      nilai_min_utbk: null
+      nilai_min_utbk: 726.93
     },
     {
       no: 50,
@@ -452,7 +452,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 14,
       peminat_2025: 252,
-      nilai_min_utbk: null
+      nilai_min_utbk: 577.45
     },
     {
       no: 51,
@@ -461,7 +461,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 20,
       peminat_2025: 128,
-      nilai_min_utbk: null
+      nilai_min_utbk: 525.18
     },
     {
       no: 52,
@@ -470,7 +470,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 20,
       peminat_2025: 290,
-      nilai_min_utbk: null
+      nilai_min_utbk: 564.52
     },
     {
       no: 53,
@@ -479,7 +479,7 @@ export const unand = {
       jenjang: "S1",
       daya_tampung_2026: 20,
       peminat_2025: 204,
-      nilai_min_utbk: null
+      nilai_min_utbk: 664.16
     },
     {
       no: 54,
@@ -506,7 +506,7 @@ export const unand = {
       jenjang: "D3",
       daya_tampung_2026: 47,
       peminat_2025: 1703,
-      nilai_min_utbk: null
+      nilai_min_utbk: 717.04
     },
     {
       no: 57,
@@ -515,7 +515,7 @@ export const unand = {
       jenjang: "D3",
       daya_tampung_2026: 25,
       peminat_2025: 2252,
-      nilai_min_utbk: null
+      nilai_min_utbk: 655.16
     },
     {
       no: 58,
@@ -524,7 +524,7 @@ export const unand = {
       jenjang: "D3",
       daya_tampung_2026: 45,
       peminat_2025: 1801,
-      nilai_min_utbk: null
+      nilai_min_utbk: 733.54
     },
     {
       no: 59,
@@ -533,7 +533,7 @@ export const unand = {
       jenjang: "D3",
       daya_tampung_2026: 33,
       peminat_2025: 1214,
-      nilai_min_utbk: null
+      nilai_min_utbk: 692.05
     }
   ]
 };

@@ -20,7 +20,7 @@ export const us = {
       jenjang: "S1",
       daya_tampung_2026: 48,
       peminat_2025: 90,
-      nilai_min_utbk: null
+      nilai_min_utbk: 703.6
     },
     {
       no: 3,

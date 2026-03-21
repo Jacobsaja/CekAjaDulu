@@ -11,7 +11,7 @@ export const unimor = {
       jenjang: "S1",
       daya_tampung_2026: 52,
       peminat_2025: 79,
-      nilai_min_utbk: null
+      nilai_min_utbk: 521.1
     },
     {
       no: 2,
@@ -20,7 +20,7 @@ export const unimor = {
       jenjang: "S1",
       daya_tampung_2026: 44,
       peminat_2025: 60,
-      nilai_min_utbk: null
+      nilai_min_utbk: 508.56
     },
     {
       no: 3,
@@ -29,7 +29,7 @@ export const unimor = {
       jenjang: "S1",
       daya_tampung_2026: 52,
       peminat_2025: 83,
-      nilai_min_utbk: null
+      nilai_min_utbk: 531.33
     },
     {
       no: 4,
@@ -38,7 +38,7 @@ export const unimor = {
       jenjang: "S1",
       daya_tampung_2026: 72,
       peminat_2025: 154,
-      nilai_min_utbk: null
+      nilai_min_utbk: 538.94
     },
     {
       no: 5,
@@ -47,7 +47,7 @@ export const unimor = {
       jenjang: "S1",
       daya_tampung_2026: 72,
       peminat_2025: 53,
-      nilai_min_utbk: null
+      nilai_min_utbk: 521.25
     },
     {
       no: 6,
@@ -56,7 +56,7 @@ export const unimor = {
       jenjang: "S1",
       daya_tampung_2026: 40,
       peminat_2025: 47,
-      nilai_min_utbk: null
+      nilai_min_utbk: 513.13
     },
     {
       no: 7,
@@ -65,7 +65,7 @@ export const unimor = {
       jenjang: "S1",
       daya_tampung_2026: 24,
       peminat_2025: 12,
-      nilai_min_utbk: null
+      nilai_min_utbk: 507.51
     },
     {
       no: 8,
@@ -74,7 +74,7 @@ export const unimor = {
       jenjang: "S1",
       daya_tampung_2026: 32,
       peminat_2025: 37,
-      nilai_min_utbk: null
+      nilai_min_utbk: 488.03
     },
     {
       no: 9,
@@ -83,7 +83,7 @@ export const unimor = {
       jenjang: "S1",
       daya_tampung_2026: 70,
       peminat_2025: 381,
-      nilai_min_utbk: null
+      nilai_min_utbk: 555.14
     },
     {
       no: 10,
@@ -92,7 +92,7 @@ export const unimor = {
       jenjang: "S1",
       daya_tampung_2026: 116,
       peminat_2025: 116,
-      nilai_min_utbk: null
+      nilai_min_utbk: 540.11
     },
     {
       no: 11,
@@ -101,7 +101,7 @@ export const unimor = {
       jenjang: "S1",
       daya_tampung_2026: 100,
       peminat_2025: 109,
-      nilai_min_utbk: null
+      nilai_min_utbk: 528.69
     },
     {
       no: 12,
@@ -110,7 +110,7 @@ export const unimor = {
       jenjang: "S1",
       daya_tampung_2026: 72,
       peminat_2025: 236,
-      nilai_min_utbk: null
+      nilai_min_utbk: 542.44
     },
     {
       no: 13,
@@ -119,7 +119,7 @@ export const unimor = {
       jenjang: "S1",
       daya_tampung_2026: 68,
       peminat_2025: 88,
-      nilai_min_utbk: null
+      nilai_min_utbk: 528.12
     },
     {
       no: 14,
@@ -128,7 +128,7 @@ export const unimor = {
       jenjang: "S1",
       daya_tampung_2026: 120,
       peminat_2025: 210,
-      nilai_min_utbk: null
+      nilai_min_utbk: 545.51
     },
     {
       no: 15,
@@ -137,7 +137,7 @@ export const unimor = {
       jenjang: "S1",
       daya_tampung_2026: 90,
       peminat_2025: 45,
-      nilai_min_utbk: null
+      nilai_min_utbk: 528.18
     },
     {
       no: 16,
@@ -164,7 +164,7 @@ export const unimor = {
       jenjang: "D3",
       daya_tampung_2026: 42,
       peminat_2025: 362,
-      nilai_min_utbk: null
+      nilai_min_utbk: 544.2
     }
   ]
 };

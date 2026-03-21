@@ -11,7 +11,7 @@ export const itb = {
       jenjang: "S1",
       daya_tampung_2026: 130,
       peminat_2025: 2703,
-      nilai_min_utbk: null
+      nilai_min_utbk: 743.19
     },
     {
       no: 2,
@@ -20,7 +20,7 @@ export const itb = {
       jenjang: "S1",
       daya_tampung_2026: 115,
       peminat_2025: 4975,
-      nilai_min_utbk: null
+      nilai_min_utbk: 820.09
     },
     {
       no: 3,
@@ -29,7 +29,7 @@ export const itb = {
       jenjang: "S1",
       daya_tampung_2026: 56,
       peminat_2025: 1138,
-      nilai_min_utbk: null
+      nilai_min_utbk: 704.57
     },
     {
       no: 4,
@@ -38,7 +38,7 @@ export const itb = {
       jenjang: "S1",
       daya_tampung_2026: 42,
       peminat_2025: 413,
-      nilai_min_utbk: null
+      nilai_min_utbk: 665.3
     },
     {
       no: 5,
@@ -47,7 +47,7 @@ export const itb = {
       jenjang: "S1",
       daya_tampung_2026: 100,
       peminat_2025: 2586,
-      nilai_min_utbk: null
+      nilai_min_utbk: 801.13
     },
     {
       no: 6,
@@ -56,7 +56,7 @@ export const itb = {
       jenjang: "S1",
       daya_tampung_2026: 75,
       peminat_2025: 788,
-      nilai_min_utbk: null
+      nilai_min_utbk: 672.98
     },
     {
       no: 7,
@@ -65,7 +65,7 @@ export const itb = {
       jenjang: "S1",
       daya_tampung_2026: 33,
       peminat_2025: 567,
-      nilai_min_utbk: null
+      nilai_min_utbk: 682.86
     },
     {
       no: 8,
@@ -74,7 +74,7 @@ export const itb = {
       jenjang: "S1",
       daya_tampung_2026: 30,
       peminat_2025: 1584,
-      nilai_min_utbk: null
+      nilai_min_utbk: 790.62
     },
     {
       no: 9,
@@ -83,7 +83,7 @@ export const itb = {
       jenjang: "S1",
       daya_tampung_2026: 30,
       peminat_2025: 373,
-      nilai_min_utbk: null
+      nilai_min_utbk: 662.32
     },
     {
       no: 10,
@@ -92,7 +92,7 @@ export const itb = {
       jenjang: "S1",
       daya_tampung_2026: 60,
       peminat_2025: 609,
-      nilai_min_utbk: null
+      nilai_min_utbk: 689.84
     },
     {
       no: 11,
@@ -101,7 +101,7 @@ export const itb = {
       jenjang: "S1",
       daya_tampung_2026: 98,
       peminat_2025: 901,
-      nilai_min_utbk: null
+      nilai_min_utbk: 686.39
     },
     {
       no: 12,
@@ -110,7 +110,7 @@ export const itb = {
       jenjang: "S1",
       daya_tampung_2026: 67,
       peminat_2025: 3526,
-      nilai_min_utbk: null
+      nilai_min_utbk: 818.63
     },
     {
       no: 13,
@@ -119,7 +119,7 @@ export const itb = {
       jenjang: "S1",
       daya_tampung_2026: 75,
       peminat_2025: 1802,
-      nilai_min_utbk: null
+      nilai_min_utbk: 756.26
     },
     {
       no: 14,
@@ -128,7 +128,7 @@ export const itb = {
       jenjang: "S1",
       daya_tampung_2026: 110,
       peminat_2025: 1840,
-      nilai_min_utbk: null
+      nilai_min_utbk: 805.11
     },
     {
       no: 15,
@@ -137,7 +137,7 @@ export const itb = {
       jenjang: "S1",
       daya_tampung_2026: 55,
       peminat_2025: 2483,
-      nilai_min_utbk: null
+      nilai_min_utbk: 811.67
     },
     {
       no: 16,
@@ -146,7 +146,7 @@ export const itb = {
       jenjang: "S1",
       daya_tampung_2026: 51,
       peminat_2025: 369,
-      nilai_min_utbk: null
+      nilai_min_utbk: 630.97
     },
     {
       no: 17,
@@ -173,7 +173,7 @@ export const itb = {
       jenjang: "S1",
       daya_tampung_2026: 105,
       peminat_2025: 1485,
-      nilai_min_utbk: null
+      nilai_min_utbk: 722.45
     },
     {
       no: 20,
@@ -182,7 +182,7 @@ export const itb = {
       jenjang: "S1",
       daya_tampung_2026: 55,
       peminat_2025: 1406,
-      nilai_min_utbk: null
+      nilai_min_utbk: 732.46
     },
     {
       no: 21,
@@ -191,7 +191,7 @@ export const itb = {
       jenjang: "S1",
       daya_tampung_2026: 18,
       peminat_2025: 176,
-      nilai_min_utbk: null
+      nilai_min_utbk: 606.44
     },
     {
       no: 22,
@@ -200,7 +200,7 @@ export const itb = {
       jenjang: "S1",
       daya_tampung_2026: 28,
       peminat_2025: 0,
-      nilai_min_utbk: null
+      nilai_min_utbk: 541.33
     },
     {
       no: 23,

@@ -11,7 +11,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 90,
       peminat_2025: 157,
-      nilai_min_utbk: null
+      nilai_min_utbk: 571.93
     },
     {
       no: 2,
@@ -20,7 +20,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 102,
       peminat_2025: 567,
-      nilai_min_utbk: null
+      nilai_min_utbk: 675.28
     },
     {
       no: 3,
@@ -29,7 +29,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 126,
       peminat_2025: 436,
-      nilai_min_utbk: null
+      nilai_min_utbk: 606.74
     },
     {
       no: 4,
@@ -38,7 +38,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 120,
       peminat_2025: 410,
-      nilai_min_utbk: null
+      nilai_min_utbk: 575.09
     },
     {
       no: 5,
@@ -47,7 +47,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 117,
       peminat_2025: 750,
-      nilai_min_utbk: null
+      nilai_min_utbk: 711.36
     },
     {
       no: 6,
@@ -56,7 +56,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 126,
       peminat_2025: 1195,
-      nilai_min_utbk: null
+      nilai_min_utbk: 739.01
     },
     {
       no: 7,
@@ -65,7 +65,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 45,
       peminat_2025: 42,
-      nilai_min_utbk: null
+      nilai_min_utbk: 544.06
     },
     {
       no: 8,
@@ -74,7 +74,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 90,
       peminat_2025: 486,
-      nilai_min_utbk: null
+      nilai_min_utbk: 650.98
     },
     {
       no: 9,
@@ -83,7 +83,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 87,
       peminat_2025: 625,
-      nilai_min_utbk: null
+      nilai_min_utbk: 618.47
     },
     {
       no: 10,
@@ -92,7 +92,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 75,
       peminat_2025: 745,
-      nilai_min_utbk: null
+      nilai_min_utbk: 623.54
     },
     {
       no: 11,
@@ -101,7 +101,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 60,
       peminat_2025: 98,
-      nilai_min_utbk: null
+      nilai_min_utbk: 590.16
     },
     {
       no: 12,
@@ -110,7 +110,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 72,
       peminat_2025: 511,
-      nilai_min_utbk: null
+      nilai_min_utbk: 683.01
     },
     {
       no: 13,
@@ -119,7 +119,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 60,
       peminat_2025: 159,
-      nilai_min_utbk: null
+      nilai_min_utbk: 607.73
     },
     {
       no: 14,
@@ -128,7 +128,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 102,
       peminat_2025: 1081,
-      nilai_min_utbk: null
+      nilai_min_utbk: 715.44
     },
     {
       no: 15,
@@ -137,7 +137,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 105,
       peminat_2025: 1437,
-      nilai_min_utbk: null
+      nilai_min_utbk: 659.08
     },
     {
       no: 16,
@@ -146,7 +146,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 93,
       peminat_2025: 319,
-      nilai_min_utbk: null
+      nilai_min_utbk: 593.01
     },
     {
       no: 17,
@@ -155,7 +155,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 60,
       peminat_2025: 128,
-      nilai_min_utbk: null
+      nilai_min_utbk: 591.09
     },
     {
       no: 18,
@@ -164,7 +164,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 57,
       peminat_2025: 68,
-      nilai_min_utbk: null
+      nilai_min_utbk: 498.61
     },
     {
       no: 19,
@@ -173,7 +173,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 57,
       peminat_2025: 170,
-      nilai_min_utbk: null
+      nilai_min_utbk: 581.86
     },
     {
       no: 20,
@@ -182,7 +182,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 69,
       peminat_2025: 65,
-      nilai_min_utbk: null
+      nilai_min_utbk: 511.27
     },
     {
       no: 21,
@@ -191,7 +191,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 75,
       peminat_2025: 122,
-      nilai_min_utbk: null
+      nilai_min_utbk: 563.74
     },
     {
       no: 22,
@@ -200,7 +200,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 87,
       peminat_2025: 315,
-      nilai_min_utbk: null
+      nilai_min_utbk: 601.18
     },
     {
       no: 23,
@@ -209,7 +209,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 60,
       peminat_2025: 191,
-      nilai_min_utbk: null
+      nilai_min_utbk: 537.46
     },
     {
       no: 24,
@@ -218,7 +218,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 87,
       peminat_2025: 552,
-      nilai_min_utbk: null
+      nilai_min_utbk: 625.45
     },
     {
       no: 25,
@@ -227,7 +227,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 75,
       peminat_2025: 233,
-      nilai_min_utbk: null
+      nilai_min_utbk: 572.83
     },
     {
       no: 26,
@@ -236,7 +236,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 111,
       peminat_2025: 1724,
-      nilai_min_utbk: null
+      nilai_min_utbk: 658.99
     },
     {
       no: 27,
@@ -245,7 +245,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 60,
       peminat_2025: 98,
-      nilai_min_utbk: null
+      nilai_min_utbk: 584.8
     },
     {
       no: 28,
@@ -254,7 +254,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 75,
       peminat_2025: 213,
-      nilai_min_utbk: null
+      nilai_min_utbk: 681.76
     },
     {
       no: 29,
@@ -263,7 +263,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 57,
       peminat_2025: 219,
-      nilai_min_utbk: null
+      nilai_min_utbk: 584.6
     },
     {
       no: 30,
@@ -272,7 +272,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 78,
       peminat_2025: 152,
-      nilai_min_utbk: null
+      nilai_min_utbk: 673.99
     },
     {
       no: 31,
@@ -281,7 +281,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 78,
       peminat_2025: 149,
-      nilai_min_utbk: null
+      nilai_min_utbk: 574.23
     },
     {
       no: 32,
@@ -290,7 +290,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 87,
       peminat_2025: 531,
-      nilai_min_utbk: null
+      nilai_min_utbk: 627.19
     },
     {
       no: 33,
@@ -299,7 +299,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 45,
       peminat_2025: 57,
-      nilai_min_utbk: null
+      nilai_min_utbk: 505.11
     },
     {
       no: 34,
@@ -308,7 +308,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 78,
       peminat_2025: 236,
-      nilai_min_utbk: null
+      nilai_min_utbk: 597.43
     },
     {
       no: 35,
@@ -317,7 +317,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 54,
       peminat_2025: 447,
-      nilai_min_utbk: null
+      nilai_min_utbk: 608.61
     },
     {
       no: 36,
@@ -326,7 +326,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 54,
       peminat_2025: 99,
-      nilai_min_utbk: null
+      nilai_min_utbk: 502.65
     },
     {
       no: 37,
@@ -335,7 +335,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 63,
       peminat_2025: 111,
-      nilai_min_utbk: null
+      nilai_min_utbk: 519.9
     },
     {
       no: 38,
@@ -344,7 +344,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 57,
       peminat_2025: 466,
-      nilai_min_utbk: null
+      nilai_min_utbk: 604.25
     },
     {
       no: 39,
@@ -353,7 +353,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 63,
       peminat_2025: 421,
-      nilai_min_utbk: null
+      nilai_min_utbk: 604.37
     },
     {
       no: 40,
@@ -362,7 +362,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 54,
       peminat_2025: 314,
-      nilai_min_utbk: null
+      nilai_min_utbk: 519.68
     },
     {
       no: 41,
@@ -371,7 +371,7 @@ export const itera = {
       jenjang: "S1",
       daya_tampung_2026: 45,
       peminat_2025: 79,
-      nilai_min_utbk: null
+      nilai_min_utbk: 503.11
     }
   ]
 };

@@ -11,7 +11,7 @@ export const unsika = {
       jenjang: "S1",
       daya_tampung_2026: 81,
       peminat_2025: 338,
-      nilai_min_utbk: null
+      nilai_min_utbk: 495.77
     },
     {
       no: 2,
@@ -20,7 +20,7 @@ export const unsika = {
       jenjang: "S1",
       daya_tampung_2026: 70,
       peminat_2025: 640,
-      nilai_min_utbk: null
+      nilai_min_utbk: 539.43
     },
     {
       no: 3,
@@ -29,7 +29,7 @@ export const unsika = {
       jenjang: "S1",
       daya_tampung_2026: 49,
       peminat_2025: 326,
-      nilai_min_utbk: null
+      nilai_min_utbk: 516.21
     },
     {
       no: 4,
@@ -38,7 +38,7 @@ export const unsika = {
       jenjang: "S1",
       daya_tampung_2026: 48,
       peminat_2025: 356,
-      nilai_min_utbk: null
+      nilai_min_utbk: 502.83
     },
     {
       no: 5,
@@ -47,7 +47,7 @@ export const unsika = {
       jenjang: "S1",
       daya_tampung_2026: 38,
       peminat_2025: 573,
-      nilai_min_utbk: null
+      nilai_min_utbk: 546.9
     },
     {
       no: 6,
@@ -56,7 +56,7 @@ export const unsika = {
       jenjang: "S1",
       daya_tampung_2026: 72,
       peminat_2025: 149,
-      nilai_min_utbk: null
+      nilai_min_utbk: 532.02
     },
     {
       no: 7,
@@ -65,7 +65,7 @@ export const unsika = {
       jenjang: "S1",
       daya_tampung_2026: 60,
       peminat_2025: 295,
-      nilai_min_utbk: null
+      nilai_min_utbk: 507.37
     },
     {
       no: 8,
@@ -74,7 +74,7 @@ export const unsika = {
       jenjang: "S1",
       daya_tampung_2026: 40,
       peminat_2025: 553,
-      nilai_min_utbk: null
+      nilai_min_utbk: 539.57
     },
     {
       no: 9,
@@ -83,7 +83,7 @@ export const unsika = {
       jenjang: "S1",
       daya_tampung_2026: 40,
       peminat_2025: 370,
-      nilai_min_utbk: null
+      nilai_min_utbk: 533.7
     },
     {
       no: 10,
@@ -92,7 +92,7 @@ export const unsika = {
       jenjang: "S1",
       daya_tampung_2026: 30,
       peminat_2025: 146,
-      nilai_min_utbk: null
+      nilai_min_utbk: 493.76
     },
     {
       no: 11,
@@ -101,7 +101,7 @@ export const unsika = {
       jenjang: "S1",
       daya_tampung_2026: 40,
       peminat_2025: 84,
-      nilai_min_utbk: null
+      nilai_min_utbk: 501.14
     },
     {
       no: 12,
@@ -110,7 +110,7 @@ export const unsika = {
       jenjang: "S1",
       daya_tampung_2026: 33,
       peminat_2025: 387,
-      nilai_min_utbk: null
+      nilai_min_utbk: 544.64
     },
     {
       no: 13,
@@ -119,7 +119,7 @@ export const unsika = {
       jenjang: "S1",
       daya_tampung_2026: 30,
       peminat_2025: 264,
-      nilai_min_utbk: null
+      nilai_min_utbk: 495.16
     },
     {
       no: 14,
@@ -128,7 +128,7 @@ export const unsika = {
       jenjang: "S1",
       daya_tampung_2026: 126,
       peminat_2025: 516,
-      nilai_min_utbk: null
+      nilai_min_utbk: 555.3
     },
     {
       no: 15,
@@ -137,7 +137,7 @@ export const unsika = {
       jenjang: "S1",
       daya_tampung_2026: 105,
       peminat_2025: 713,
-      nilai_min_utbk: null
+      nilai_min_utbk: 556.88
     },
     {
       no: 16,
@@ -146,7 +146,7 @@ export const unsika = {
       jenjang: "S1",
       daya_tampung_2026: 97,
       peminat_2025: 640,
-      nilai_min_utbk: null
+      nilai_min_utbk: 556.7
     },
     {
       no: 17,
@@ -155,7 +155,7 @@ export const unsika = {
       jenjang: "S1",
       daya_tampung_2026: 42,
       peminat_2025: 178,
-      nilai_min_utbk: null
+      nilai_min_utbk: 490.5
     },
     {
       no: 18,
@@ -164,7 +164,7 @@ export const unsika = {
       jenjang: "S1",
       daya_tampung_2026: 71,
       peminat_2025: 262,
-      nilai_min_utbk: null
+      nilai_min_utbk: 546.01
     },
     {
       no: 19,
@@ -173,7 +173,7 @@ export const unsika = {
       jenjang: "S1",
       daya_tampung_2026: 70,
       peminat_2025: 140,
-      nilai_min_utbk: null
+      nilai_min_utbk: 540.06
     },
     {
       no: 20,
@@ -182,7 +182,7 @@ export const unsika = {
       jenjang: "S1",
       daya_tampung_2026: 70,
       peminat_2025: 266,
-      nilai_min_utbk: null
+      nilai_min_utbk: 534.64
     },
     {
       no: 21,
@@ -191,7 +191,7 @@ export const unsika = {
       jenjang: "S1",
       daya_tampung_2026: 70,
       peminat_2025: 314,
-      nilai_min_utbk: null
+      nilai_min_utbk: 523.05
     },
     {
       no: 22,
@@ -200,7 +200,7 @@ export const unsika = {
       jenjang: "S1",
       daya_tampung_2026: 70,
       peminat_2025: 664,
-      nilai_min_utbk: null
+      nilai_min_utbk: 547.39
     },
     {
       no: 23,
@@ -209,7 +209,7 @@ export const unsika = {
       jenjang: "S1",
       daya_tampung_2026: 37,
       peminat_2025: 203,
-      nilai_min_utbk: null
+      nilai_min_utbk: 523.03
     },
     {
       no: 24,
@@ -218,7 +218,7 @@ export const unsika = {
       jenjang: "S1",
       daya_tampung_2026: 40,
       peminat_2025: 399,
-      nilai_min_utbk: null
+      nilai_min_utbk: 525.5
     },
     {
       no: 25,
@@ -227,7 +227,7 @@ export const unsika = {
       jenjang: "S1",
       daya_tampung_2026: 30,
       peminat_2025: 227,
-      nilai_min_utbk: null
+      nilai_min_utbk: 499.11
     },
     {
       no: 26,
@@ -236,7 +236,7 @@ export const unsika = {
       jenjang: "S1",
       daya_tampung_2026: 20,
       peminat_2025: 62,
-      nilai_min_utbk: null
+      nilai_min_utbk: 488.88
     },
     {
       no: 27,
@@ -245,7 +245,7 @@ export const unsika = {
       jenjang: "S1",
       daya_tampung_2026: 20,
       peminat_2025: 0,
-      nilai_min_utbk: null
+      nilai_min_utbk: 500.76
     },
     {
       no: 28,
@@ -281,7 +281,7 @@ export const unsika = {
       jenjang: "S1",
       daya_tampung_2026: 24,
       peminat_2025: 0,
-      nilai_min_utbk: null
+      nilai_min_utbk: 534.49
     },
     {
       no: 32,
@@ -290,7 +290,7 @@ export const unsika = {
       jenjang: "S1",
       daya_tampung_2026: 0,
       peminat_2025: 0,
-      nilai_min_utbk: null
+      nilai_min_utbk: 529.42
     },
     {
       no: 33,
@@ -299,7 +299,7 @@ export const unsika = {
       jenjang: "D3",
       daya_tampung_2026: 48,
       peminat_2025: 1155,
-      nilai_min_utbk: null
+      nilai_min_utbk: 559.24
     },
     {
       no: 34,
@@ -308,7 +308,7 @@ export const unsika = {
       jenjang: "D3",
       daya_tampung_2026: 28,
       peminat_2025: 712,
-      nilai_min_utbk: null
+      nilai_min_utbk: 536.86
     },
     {
       no: 35,
@@ -317,7 +317,7 @@ export const unsika = {
       jenjang: "D3",
       daya_tampung_2026: 28,
       peminat_2025: 721,
-      nilai_min_utbk: null
+      nilai_min_utbk: 549.54
     }
   ]
 };
