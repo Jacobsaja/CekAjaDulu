@@ -61,8 +61,16 @@ export default function TesMinat() {
         });
 
         const riasecScores = {};
-        Object.keys(categoryTotals).forEach(cat => {
-            riasecScores[cat] = ((categoryTotals[cat] - 8) / 32) * 100;
+        Object.keys(CATEGORIES).forEach(cat => {
+            const catQuestions = questions.filter(q => q.category === cat);
+            const count = catQuestions.length;
+            if (count > 0) {
+                const min = count * 1;
+                const max = count * 5;
+                riasecScores[cat] = ((categoryTotals[cat] - min) / (max - min)) * 100;
+            } else {
+                riasecScores[cat] = 0;
+            }
         });
 
         // 2. Calculate Cluster Scores
@@ -118,51 +126,58 @@ export default function TesMinat() {
     }
 
     return (
-        <div className="min-h-screen bg-gray-50/50 dark:bg-slate-950 flex flex-col">
-            <nav className="fixed top-0 left-0 right-0 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-gray-100 dark:border-slate-800 z-50">
-                <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div className="min-h-screen flex flex-col relative overflow-hidden bg-slate-50 dark:bg-slate-950 transition-colors duration-700">
+            {/* Animated Background Decor */}
+            <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden pointer-events-none">
+                <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-600/10 dark:bg-blue-600/20 rounded-full blur-[120px] animate-pulse-slow" />
+                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-indigo-600/10 dark:bg-indigo-600/20 rounded-full blur-[120px] animate-pulse-slow delay-1000" />
+            </div>
+
+            <nav className="fixed top-0 left-0 right-0 glass z-50">
+                <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
                     <button
                         onClick={() => navigate('/tes-minat')}
-                        className="text-gray-500 dark:text-slate-300 hover:text-blue-700 dark:hover:text-blue-400 flex items-center gap-1 font-semibold text-sm transition-colors"
+                        className="text-gray-500 dark:text-slate-400 hover:text-blue-700 dark:hover:text-blue-400 flex items-center gap-2 font-black text-sm uppercase tracking-widest transition-all hover:-translate-x-1"
                     >
                         <ChevronLeft size={20} />
-                        Kembali
+                        Keluar
                     </button>
-                    <div className="text-blue-800 dark:text-blue-400 font-bold text-lg">Cekadu <span className="text-gray-300 dark:text-slate-600 font-normal">|</span> Tes Minat</div>
-                    <div className="flex items-center gap-4">
-                        <div className="flex gap-1">
-                            {[0, 1].map(p => (
-                                <div key={p} className={`w-2 h-2 rounded-full ${phase >= p ? 'bg-blue-600' : 'bg-gray-200 dark:bg-slate-700'}`} />
-                            ))}
+                    <div className="flex flex-col items-center">
+                        <div className="flex items-center gap-2 text-blue-800 dark:text-blue-400 font-black text-lg tracking-tighter uppercase">
+                            <Brain className="animate-pulse text-blue-600" size={24} />
+                            <span>Cekadu <span className="text-gray-300 dark:text-slate-600 font-light mx-1">/</span> Test</span>
                         </div>
-                        <div className="w-16 md:w-24 h-2 bg-gray-100 dark:bg-slate-800 rounded-full overflow-hidden hidden sm:block">
-                            <div
-                                className="h-full bg-blue-600 transition-all duration-300"
-                                style={{ width: `${(answeredCount / totalQuestions) * 100}%` }}
-                            />
+                    </div>
+                    <div className="flex items-center gap-4">
+                        <div className="flex gap-1.5">
+                            {[0, 1].map(p => (
+                                <div key={p} className={`w-2.5 h-2.5 rounded-full transition-all duration-500 ${phase >= p ? 'bg-blue-600 shadow-lg shadow-blue-500/50 scale-110' : 'bg-gray-200 dark:bg-slate-800'}`} />
+                            ))}
                         </div>
                     </div>
                 </div>
             </nav>
 
-            <main className="flex-1 flex items-center justify-center p-6 mt-16 pb-32">
-                <QuestionCard
-                    question={currentQuestion}
-                    currentAnswer={phase === 0 ? prefAnswers[currentQuestion.id] : answers[currentQuestion.id]}
-                    currentIndex={currentIndex}
-                    totalQuestions={totalQuestions}
-                    answeredCount={answeredCount}
-                    onAnswer={handleAnswer}
-                    isDirectional={phase === 0}
-                />
+            <main className="flex-1 flex items-center justify-center p-6 mt-20 pb-32">
+                <div className="w-full max-w-4xl flex justify-center">
+                    <QuestionCard
+                        question={currentQuestion}
+                        currentAnswer={phase === 0 ? prefAnswers[currentQuestion.id] : answers[currentQuestion.id]}
+                        currentIndex={currentIndex}
+                        totalQuestions={totalQuestions}
+                        answeredCount={answeredCount}
+                        onAnswer={handleAnswer}
+                        isDirectional={phase === 0}
+                    />
+                </div>
             </main>
 
-            <footer className="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-gray-100 dark:border-slate-800 p-6 md:px-12 z-40">
+            <footer className="fixed bottom-0 left-0 right-0 glass p-6 md:px-12 z-40">
                 <div className="max-w-4xl mx-auto flex items-center justify-between gap-4">
                     <button
                         onClick={handlePrevious}
                         disabled={currentIndex === 0 && phase === 0}
-                        className={`flex items-center gap-2 font-bold transition-all ${currentIndex === 0 && phase === 0 ? 'text-gray-200 dark:text-slate-700 cursor-not-allowed' : 'text-gray-500 dark:text-slate-300 hover:text-blue-700 dark:hover:text-blue-400'
+                        className={`flex items-center gap-2 font-black transition-all uppercase tracking-widest text-xs ${currentIndex === 0 && phase === 0 ? 'text-gray-200 dark:text-slate-800 cursor-not-allowed' : 'text-gray-500 dark:text-slate-400 hover:text-blue-700 dark:hover:text-blue-400'
                             }`}
                     >
                         <ChevronLeft size={20} />
@@ -174,21 +189,21 @@ export default function TesMinat() {
                             <button
                                 onClick={calculateResults}
                                 disabled={!isAllAnswered}
-                                className={`flex items-center gap-2 px-8 py-4 rounded-2xl font-bold bg-blue-700 dark:bg-blue-600 text-white shadow-xl shadow-blue-700/20 dark:shadow-blue-900/40 transform active:scale-95 transition-all ${!isAllAnswered
+                                className={`flex items-center gap-3 px-10 py-5 rounded-[2rem] font-black uppercase tracking-widest text-sm bg-gradient-to-r from-blue-700 to-indigo-700 dark:from-blue-600 dark:to-indigo-600 text-white shadow-2xl shadow-blue-500/30 transform active:scale-95 transition-all ${!isAllAnswered
                                     ? 'opacity-50 grayscale cursor-not-allowed'
-                                    : 'hover:bg-blue-800 dark:hover:bg-blue-500 hover:-translate-y-1'
+                                    : 'hover:shadow-blue-500/50 hover:-translate-y-1'
                                     }`}
                             >
                                 <Send size={18} />
-                                {isAllAnswered ? 'Lihat Hasil' : `Jawab semua soal dulu (${answeredCount}/${totalQuestions})`}
+                                {isAllAnswered ? 'Lihat Hasil' : `Selesaikan (${answeredCount}/${totalQuestions})`}
                             </button>
                         ) : (
                             <button
                                 onClick={handleNext}
                                 disabled={phase === 0 && !prefAnswers[currentQuestion.id]}
-                                className={`flex items-center gap-2 px-8 py-4 rounded-2xl font-bold transition-all ${phase === 0 && !prefAnswers[currentQuestion.id]
-                                    ? 'bg-gray-100 dark:bg-slate-800 text-gray-400 dark:text-slate-500 cursor-not-allowed'
-                                    : 'bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-700 text-gray-700 dark:text-slate-300 hover:border-blue-600 hover:text-blue-600 dark:hover:text-blue-400 shadow-sm'
+                                className={`flex items-center gap-3 px-10 py-5 rounded-[2rem] font-black uppercase tracking-widest text-sm transition-all ${phase === 0 && !prefAnswers[currentQuestion.id]
+                                    ? 'bg-gray-100 dark:bg-slate-800 text-gray-400 dark:text-slate-600 cursor-not-allowed'
+                                    : 'glass border-2 border-blue-600/20 text-blue-700 dark:text-blue-400 hover:border-blue-600 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 dark:hover:text-white shadow-lg'
                                     }`}
                             >
                                 <span className="hidden sm:inline">Berikutnya</span>

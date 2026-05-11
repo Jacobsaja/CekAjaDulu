@@ -53,7 +53,7 @@ const TesMinatIntro = () => {
                             </h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {[
-                                    "Terdiri dari 48 pertanyaan singkat.",
+                                    "Terdiri dari 30 pertanyaan singkat.",
                                     "Skala 1-5 (Sangat Tidak Setuju hingga Sangat Setuju).",
                                     "Tidak ada jawaban benar atau salah.",
                                     "Waktu pengerjaan sekitar 5-10 menit."

@@ -44,7 +44,6 @@ const SelectionModal = ({ isOpen, onClose }) => {
                                     <span>Mulai Cek</span>
                                     <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                                 </div>
-                                <span className="text-[10px] uppercase tracking-widest font-bold text-gray-400 dark:text-slate-500">(Dalam tahap pengembangan)</span>
                             </div>
                         </button>
 

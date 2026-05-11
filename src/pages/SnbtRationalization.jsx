@@ -3,6 +3,7 @@ import Layout from '../components/Layout';
 import { Section, Button } from '../components/Generic';
 import { Search, ChevronDown, CheckCircle2, AlertCircle, BarChart3, TrendingUp, Info, Users, GraduationCap, ArrowRight } from 'lucide-react';
 import { allUniversities } from '../../data/snbt/index.js';
+import AISnbtConsultant from '../components/AISnbtConsultant';
 
 // Custom hook for count-up animation
 const useCountUp = (end, duration = 1000, startTrigger = false) => {
@@ -517,6 +518,16 @@ const SnbtRationalization = () => {
                                     </table>
                                 </div>
                             </div>
+                        </div>
+
+                        {/* AI Strategist Section */}
+                        <div className="pt-8">
+                            <AISnbtConsultant 
+                                activeChoices={activeChoices} 
+                                utbkScore={utbkScore} 
+                                getChance={getChance} 
+                                getStatusInfo={getStatusInfo} 
+                            />
                         </div>
 
                         {/* Detailed Analysis Section */}

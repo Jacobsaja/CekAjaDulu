@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CekAjaDulu - Konsultasi Kuliah Mandiri</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #202124;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            color: #1a73e8;
+            text-align: center;
+            margin-bottom: 5px;
+            font-size: 28px;
+        }
+
+        p.tagline {
+            text-align: center;
+            color: #5f6368;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 15px;
+            color: #3c4043;
+        }
+
+        textarea,
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: 15px;
+            transition: border 0.3s;
+        }
+
+        textarea:focus,
+        input:focus {
+            outline: none;
+            border-color: #1a73e8;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #1557b0;
+        }
+
+        #loading {
+            text-align: center;
+            color: #1a73e8;
+            font-style: italic;
+            margin-top: 20px;
+            display: none;
+            font-weight: 600;
+        }
+
+        #result-box {
+            margin-top: 30px;
+            padding: 25px;
+            border-left: 4px solid #1a73e8;
+            border-radius: 0 8px 8px 0;
+            background: #f1f3f4;
+            display: none;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🎓 CekAjaDulu (Cekadu)</h1>
+        <p class="tagline">Ambil Keputusan Kuliah Lebih Cerdas dengan Data & ROI.</p>
+
+        <div class="form-group">
+            <label>1. Apa minat, bakat, atau keahlian terbesarmu saat ini?</label>
+            <textarea id="minat" rows="3"
+                placeholder="Contoh: Suka banget matematika, coding, dan ngerjain soal logika..."></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>2. Jurusan & Kampus Impian (Opsional)</label>
+            <input type="text" id="target" placeholder="Contoh: Teknik Informatika UI atau Sistem Informasi ITB">
+        </div>
+
+        <button onclick="analisisData()">Analisis Peluang & Prospek 🚀</button>
+
+        <div id="loading">✨ Gemini sedang menganalisis miliaran data pendidikan...</div>
+        <div id="result-box"></div>
+    </div>
+
+    <script>
+        async function analisisData() {
+            const minat = document.getElementById('minat').value;
+            const target = document.getElementById('target').value;
+            const resultBox = document.getElementById('result-box');
+            const loading = document.getElementById('loading');
+
+            if (!minat) {
+                alert("Isi minatmu dulu dong, biar AI CekAjaDulu bisa analisis akurat!");
+                return;
+            }
+
+            // Gabungkan input jadi satu prompt untuk dikirim ke backend
+            const gabunganPrompt = `Minat dan bakat saya: ${minat}. Target Jurusan/Kampus: ${target || 'Belum ada ide, tolong rekomendasikan'}. Tolong analisis menggunakan standar Cekadu.`;
+
+            resultBox.style.display = 'none';
+            loading.style.display = 'block';
+
+            try {
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ promptUser: gabunganPrompt })
+                });
+
+                const data = await response.json();
+                loading.style.display = 'none';
+                resultBox.style.display = 'block';
+
+                if (data.success) {
+                    // Merapikan format bintang ganda (**) dari Gemini jadi huruf tebal (bold) & merapikan enter (new line)
+                    let formattedText = data.text.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>').replace(/\n/g, '<br>');
+                    resultBox.innerHTML = formattedText;
+                } else {
+                    resultBox.innerHTML = `<b>Error:</b> ${data.text}`;
+                }
+
+            } catch (error) {
+                loading.style.display = 'none';
+                resultBox.style.display = 'block';
+                resultBox.innerHTML = `<b>Waduh:</b> Gagal menghubungi server. Pastikan server lokal menyala!`;
+            }
+        }
+    </script>
+</body>
+
+</html>

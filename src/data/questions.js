@@ -2,61 +2,43 @@ export const questions = [
     // INVESTIGATIVE (I)
     { id: 1, category: "I", text: "Saya menikmati menganalisis penyebab suatu fenomena." },
     { id: 2, category: "I", text: "Saya tertarik memahami cara kerja sistem yang kompleks." },
-    { id: 3, category: "I", text: "Saya lebih suka menyelesaikan soal logika dibanding presentasi." },
     { id: 4, category: "I", text: "Saya menikmati membaca topik sains atau teknologi." },
     { id: 5, category: "I", text: "Saya senang mencari pola dari data atau informasi." },
-    { id: 6, category: "I", text: "Saya tertarik melakukan eksperimen atau penelitian kecil." },
     { id: 7, category: "I", text: "Saya tidak mudah puas sebelum memahami sesuatu secara mendalam." },
-    { id: 8, category: "I", text: "Saya menikmati diskusi yang menantang secara intelektual." },
 
     // REALISTIC (R)
     { id: 9, category: "R", text: "Saya lebih suka praktik langsung dibanding teori panjang." },
     { id: 10, category: "R", text: "Saya tertarik pada mesin, alat, atau sistem fisik." },
     { id: 11, category: "R", text: "Saya merasa puas ketika berhasil memperbaiki sesuatu." },
-    { id: 12, category: "R", text: "Saya nyaman bekerja dengan alat atau perangkat." },
-    { id: 13, category: "R", text: "Saya menikmati aktivitas teknis dibanding diskusi panjang." },
     { id: 14, category: "R", text: "Saya suka melihat hasil nyata dari pekerjaan saya." },
     { id: 15, category: "R", text: "Saya tertarik pada dunia konstruksi atau teknik terapan." },
-    { id: 16, category: "R", text: "Saya lebih suka pekerjaan yang konkret daripada abstrak." },
 
     // ARTISTIC (A)
     { id: 17, category: "A", text: "Saya menikmati mengekspresikan ide melalui desain atau karya kreatif." },
     { id: 18, category: "A", text: "Saya sering memikirkan cara unik menyelesaikan masalah." },
     { id: 19, category: "A", text: "Saya tertarik pada bidang visual atau media kreatif." },
-    { id: 20, category: "A", text: "Saya merasa bosan dengan sistem yang terlalu kaku." },
     { id: 21, category: "A", text: "Saya menikmati membuat sesuatu yang orisinal." },
     { id: 22, category: "A", text: "Saya tertarik pada seni, film, atau konten digital." },
-    { id: 23, category: "A", text: "Saya suka mengeksplorasi ide baru tanpa batasan." },
-    { id: 24, category: "A", text: "Saya nyaman bekerja dalam lingkungan fleksibel." },
 
     // SOCIAL (S)
     { id: 25, category: "S", text: "Saya menikmati membantu orang memahami sesuatu." },
     { id: 26, category: "S", text: "Saya tertarik pada psikologi atau perilaku manusia." },
     { id: 27, category: "S", text: "Saya merasa puas ketika bisa memberi dampak ke orang lain." },
-    { id: 28, category: "S", text: "Saya nyaman berbicara di depan umum." },
     { id: 29, category: "S", text: "Saya suka bekerja dalam tim." },
-    { id: 30, category: "S", text: "Saya peduli terhadap kesejahteraan orang lain." },
     { id: 31, category: "S", text: "Saya tertarik pada bidang pendidikan atau kesehatan." },
-    { id: 32, category: "S", text: "Saya merasa energi saya meningkat saat berinteraksi dengan orang lain." },
 
     // ENTERPRISING (E)
     { id: 33, category: "E", text: "Saya tertarik membangun sesuatu yang menghasilkan keuntungan." },
-    { id: 34, category: "E", text: "Saya suka mengambil keputusan penting." },
     { id: 35, category: "E", text: "Saya menikmati memimpin tim." },
     { id: 36, category: "E", text: "Saya nyaman mengambil risiko terukur." },
     { id: 37, category: "E", text: "Saya suka meyakinkan orang lain terhadap suatu ide." },
     { id: 38, category: "E", text: "Saya tertarik pada dunia bisnis atau manajemen." },
-    { id: 39, category: "E", text: "Saya memiliki ambisi untuk mencapai posisi tinggi." },
-    { id: 40, category: "E", text: "Saya menikmati tantangan kompetitif." },
 
     // CONVENTIONAL (C)
     { id: 41, category: "C", text: "Saya suka pekerjaan yang terstruktur dan rapi." },
     { id: 42, category: "C", text: "Saya nyaman bekerja dengan angka dan data." },
-    { id: 43, category: "C", text: "Saya menikmati membuat sistem lebih efisien." },
     { id: 44, category: "C", text: "Saya teliti terhadap detail kecil." },
     { id: 45, category: "C", text: "Saya suka mengikuti prosedur yang jelas." },
-    { id: 46, category: "C", text: "Saya menikmati pekerjaan administratif atau pencatatan." },
-    { id: 47, category: "C", text: "Saya merasa nyaman dengan aturan yang jelas." },
     { id: 48, category: "C", text: "Saya suka mengatur dan mengelola informasi." }
 ];
 
@@ -71,18 +53,6 @@ export const DIRECTIONAL_QUESTIONS = [
             { label: "Bisnis & Ekonomi", value: "business" },
             { label: "Sosial & Humaniora", value: "social" },
             { label: "Seni & Kreativitas", value: "creative" }
-        ]
-    },
-    {
-        id: "pref_2",
-        text: "Apa jenis lingkungan kerja yang Anda idamkan?",
-        options: [
-            { label: "Di balik layar dengan komputer/data", value: "technology" },
-            { label: "Langsung dengan pasien/masyarakat", value: "health" },
-            { label: "Di laboratorium atau lapangan penelitian", value: "science" },
-            { label: "Di kantor korporat yang dinamis", value: "business" },
-            { label: "Di lingkungan pendidikan atau pelayanan publik", value: "social" },
-            { label: "Di studio atau ruang kreatif", value: "creative" }
         ]
     }
 ];
@@ -213,6 +183,3 @@ export const ACADEMIC_MAJORS_MAPPING = {
     creative: ["DKV", "Arsitektur", "Interior Design", "Seni Rupa", "Film & Televisi"],
     general: ["Ilmu Keolahragaan", "Pendidikan Agama", "Ilmu Pendidikan", "Manajemen Pendidikan", "Sosiologi Pendidikan"]
 };
-
-// FIELD_MAPPING is now replaced by MAJOR_CLUSTERS logic in the scoring system
-

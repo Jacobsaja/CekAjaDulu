@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import { Section, Button } from '../components/Generic';
-import { ChevronRight, ChevronLeft, School, BookOpen, Heart, MapPin, CircleCheck as CheckCircle2, CircleAlert as AlertCircle, BarChart3 as BarChart2, Table } from 'lucide-react';
+import { ChevronRight, ChevronLeft, School, BookOpen, Heart, MapPin, Search, GraduationCap, CircleCheck as CheckCircle2, CircleAlert as AlertCircle, BarChart3 as BarChart2, Table } from 'lucide-react';
+import AISnbpConsultant from '../components/AISnbpConsultant';
+import { allUniversities } from '../../data/snbt/index.js';
 
 const SUBJECT_LIST = [
     "Matematika", "Bahasa Indonesia", "Bahasa Inggris", "Matematika Lanjut",
@@ -14,6 +16,22 @@ const SEMESTERS = [1, 2, 3, 4, 5];
 const SnbpSimulation = () => {
     const [step, setStep] = useState(1);
     const [resultsVisible, setResultsVisible] = useState(false);
+    const [simulationResults, setSimulationResults] = useState([]);
+    const [userAvgGrade, setUserAvgGrade] = useState(0);
+
+    const [preferences, setPreferences] = useState({
+        interests: [],
+        city: "",
+        favoritePtn: ""
+    });
+
+    const [selectedChoices, setSelectedChoices] = useState([
+        { id: 1, label: "Pilihan 1", univ: null, major: null },
+        { id: 2, label: "Pilihan 2", univ: null, major: null }
+    ]);
+
+    const [activeUnivSearch, setActiveUnivSearch] = useState({ id: null, term: "" });
+    const [activeMajorSearch, setActiveMajorSearch] = useState({ id: null, term: "" });
 
     // Academic Profile State
     const [academicProfile, setAcademicProfile] = useState({
@@ -52,8 +70,94 @@ const SnbpSimulation = () => {
     const prevStep = () => setStep(prev => Math.max(prev - 1, 1));
 
     const handleCalculate = () => {
+        // Compute average grade
+        let totalSum = 0;
+        let totalCount = 0;
+        SEMESTERS.forEach(sem => {
+            SUBJECT_LIST.forEach(sub => {
+                const val = Number(grades[sub][sem]);
+                if (val > 0) {
+                    totalSum += val;
+                    totalCount++;
+                }
+            });
+        });
+        const avg = totalCount > 0 ? (totalSum / totalCount) : 0;
+        setUserAvgGrade(avg);
+
+        let finalResults = [];
+
+        // 1. Calculate for User's Explicit Choices (Choice 1 & 2)
+        selectedChoices.forEach(choice => {
+            if (choice.univ && choice.major) {
+                const m = choice.major;
+                const ptn = choice.univ;
+                const requiredAvg = (m.nilai_min_utbk / 10) + 12;
+                const diff = avg - requiredAvg;
+                
+                let chanceLabel = 'Mungkin';
+                let color = 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400';
+                let chancePct = Math.min(Math.max(50 + (diff * 5), 10), 95);
+
+                if (diff >= 1.5) { chanceLabel = 'Aman'; color = 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400'; }
+                else if (diff <= -2) { chanceLabel = 'Beresiko'; color = 'bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400'; }
+
+                finalResults.push({
+                    ptn: ptn.nama,
+                    ptnCode: ptn.id.toUpperCase(),
+                    major: m.nama,
+                    mine: avg.toFixed(2),
+                    avg: requiredAvg.toFixed(2),
+                    label: chanceLabel,
+                    color,
+                    chancePct: chancePct.toFixed(0),
+                    tags: [choice.label, 'Prioritas']
+                });
+            }
+        });
+
+        // 2. Supplement with recommendations if needed
+        const ptnSearch = preferences.favoritePtn.toLowerCase();
+        let matchedPtns = [];
+        if (ptnSearch) {
+            matchedPtns = allUniversities.filter(u => u.nama.toLowerCase().includes(ptnSearch) || u.id.toLowerCase().includes(ptnSearch));
+        }
+        if (matchedPtns.length === 0) {
+            matchedPtns = allUniversities.filter(u => ['ui', 'ugm', 'itb'].includes(u.id));
+        }
+
+        matchedPtns.forEach(ptn => {
+            const sortedMajors = [...ptn.jurusan].sort((a,b) => b.nilai_min_utbk - a.nilai_min_utbk).slice(0, 3);
+            sortedMajors.forEach(m => {
+                // Avoid duplicating selected choices
+                if (finalResults.some(r => r.major === m.nama && r.ptn === ptn.nama)) return;
+
+                const requiredAvg = (m.nilai_min_utbk / 10) + 12;
+                const diff = avg - requiredAvg;
+                
+                let chanceLabel = 'Mungkin';
+                let color = 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400';
+                let chancePct = Math.min(Math.max(50 + (diff * 5), 10), 95);
+
+                if (diff >= 1.5) { chanceLabel = 'Aman'; color = 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400'; }
+                else if (diff <= -2) { chanceLabel = 'Beresiko'; color = 'bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400'; }
+
+                finalResults.push({
+                    ptn: ptn.nama,
+                    ptnCode: ptn.id.toUpperCase(),
+                    major: m.nama,
+                    mine: avg.toFixed(2),
+                    avg: requiredAvg.toFixed(2),
+                    label: chanceLabel,
+                    color,
+                    chancePct: chancePct.toFixed(0),
+                    tags: ['Rekomendasi', ptn.id.toUpperCase()]
+                });
+            });
+        });
+
+        setSimulationResults(finalResults.slice(0, 5));
         setResultsVisible(true);
-        // Smooth scroll to results
         setTimeout(() => {
             document.getElementById('results-section')?.scrollIntoView({ behavior: 'smooth' });
         }, 100);
@@ -111,8 +215,8 @@ const SnbpSimulation = () => {
                                 {step === 1 && (
                                     <div className="space-y-8">
                                         <div>
-                                            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Profil Akademik</h2>
-                                            <p className="text-gray-500 dark:text-gray-400 text-sm">Informasi ini membantu kami mengestimasi peluang berdasarkan profil sekolah kamu.</p>
+                                            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Profil Akademik & Prestasi</h2>
+                                            <p className="text-gray-500 dark:text-gray-400 text-sm">Informasi ini memiliki bobot besar dalam menunjang kelolosan SNBP.</p>
                                         </div>
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             <div className="space-y-2">
@@ -122,7 +226,7 @@ const SnbpSimulation = () => {
                                                     placeholder="Contoh: SMAN 1 Jakarta"
                                                     value={academicProfile.schoolName}
                                                     onChange={(e) => handleProfileChange('schoolName', e.target.value)}
-                                                    className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-transparent focus:bg-white dark:focus:bg-slate-800 text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-500 focus:ring-4 focus:ring-blue-50 dark:focus:ring-blue-900/30 outline-none transition-all duration-300 focus:-translate-y-0.5 focus:shadow-lg focus:shadow-blue-500/10 placeholder-gray-400 dark:placeholder-slate-500"
+                                                    className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-transparent focus:bg-white dark:focus:bg-slate-800 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-50 dark:focus:ring-blue-900/30 outline-none transition-all duration-300"
                                                 />
                                             </div>
                                             <div className="space-y-2">
@@ -130,12 +234,12 @@ const SnbpSimulation = () => {
                                                 <select
                                                     value={academicProfile.accreditation}
                                                     onChange={(e) => handleProfileChange('accreditation', e.target.value)}
-                                                    className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-500 focus:ring-4 focus:ring-blue-50 dark:focus:ring-blue-900/30 outline-none transition-all duration-300 focus:-translate-y-0.5 focus:shadow-lg focus:shadow-blue-500/10 appearance-none"
+                                                    className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-50 dark:focus:ring-blue-900/30 outline-none transition-all duration-300 appearance-none"
                                                 >
                                                     <option>Pilih Akreditasi</option>
-                                                    <option>A</option>
-                                                    <option>B</option>
-                                                    <option>C</option>
+                                                    <option>A (Kuota 40%)</option>
+                                                    <option>B (Kuota 25%)</option>
+                                                    <option>C / Lainnya (Kuota 5%)</option>
                                                 </select>
                                             </div>
                                             <div className="space-y-2">
@@ -145,29 +249,51 @@ const SnbpSimulation = () => {
                                                     placeholder="Contoh: 5"
                                                     value={academicProfile.classRank}
                                                     onChange={(e) => handleProfileChange('classRank', e.target.value)}
-                                                    className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-transparent focus:bg-white dark:focus:bg-slate-800 text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-500 focus:ring-4 focus:ring-blue-50 dark:focus:ring-blue-900/30 outline-none transition-all duration-300 focus:-translate-y-0.5 focus:shadow-lg focus:shadow-blue-500/10 placeholder-gray-400 dark:placeholder-slate-500"
+                                                    className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-transparent focus:bg-white dark:focus:bg-slate-800 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-50 dark:focus:ring-blue-900/30 outline-none transition-all duration-300"
                                                 />
                                             </div>
                                             <div className="space-y-2">
-                                                <label className="block text-sm font-bold text-gray-700 dark:text-slate-300">Ranking Sekolah (Nasional)</label>
+                                                <label className="block text-sm font-bold text-gray-700 dark:text-slate-300">Prestasi Tertinggi (Sertifikat)</label>
                                                 <select
-                                                    value={academicProfile.schoolRank}
-                                                    onChange={(e) => handleProfileChange('schoolRank', e.target.value)}
-                                                    className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-500 focus:ring-4 focus:ring-blue-50 dark:focus:ring-blue-900/30 outline-none transition-all duration-300 focus:-translate-y-0.5 focus:shadow-lg focus:shadow-blue-500/10 appearance-none"
+                                                    value={academicProfile.certificate}
+                                                    onChange={(e) => handleProfileChange('certificate', e.target.value)}
+                                                    className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-50 dark:focus:ring-blue-900/30 outline-none transition-all duration-300 appearance-none"
                                                 >
-                                                    <option>Pilih Rentang</option>
-                                                    <option>1 - 10</option>
-                                                    <option>11 - 50</option>
-                                                    <option>51 - 250</option>
-                                                    <option>251 - 500</option>
-                                                    <option>501-1000</option>
-                                                    <option>1000+</option>
+                                                    <option>Tidak Ada Sertifikat</option>
+                                                    <option>Juara Tingkat Internasional</option>
+                                                    <option>Juara Tingkat Nasional</option>
+                                                    <option>Juara Tingkat Provinsi</option>
+                                                    <option>Juara Tingkat Kota/Kabupaten</option>
+                                                </select>
+                                            </div>
+                                            <div className="space-y-2">
+                                                <label className="block text-sm font-bold text-gray-700 dark:text-slate-300">Status Portofolio</label>
+                                                <select
+                                                    value={academicProfile.portfolio}
+                                                    onChange={(e) => handleProfileChange('portfolio', e.target.value)}
+                                                    className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-50 dark:focus:ring-blue-900/30 outline-none transition-all duration-300 appearance-none"
+                                                >
+                                                    <option>Tidak Mengumpulkan Portofolio</option>
+                                                    <option>Memiliki Portofolio Sangat Baik</option>
+                                                    <option>Memiliki Portofolio Standar</option>
+                                                </select>
+                                            </div>
+                                            <div className="space-y-2">
+                                                <label className="block text-sm font-bold text-gray-700 dark:text-slate-300">Kekuatan Alumni Sekolah di PTN Tujuan</label>
+                                                <select
+                                                    value={academicProfile.alumni}
+                                                    onChange={(e) => handleProfileChange('alumni', e.target.value)}
+                                                    className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-50 dark:focus:ring-blue-900/30 outline-none transition-all duration-300 appearance-none"
+                                                >
+                                                    <option>Kurang / Tidak Tahu</option>
+                                                    <option>Sangat Kuat (Banyak Alumni)</option>
+                                                    <option>Cukup (Ada Beberapa Alumni)</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div className="p-4 bg-blue-50 dark:bg-blue-900/30 rounded-2xl flex gap-3 text-blue-700 dark:text-blue-400">
                                             <AlertCircle size={20} className="shrink-0" />
-                                            <p className="text-sm">Akreditasi dan ranking nasional sekolah memiliki bobot penting dalam seleksi SNBP.</p>
+                                            <p className="text-sm font-medium">Akreditasi, rekam jejak alumni, dan sertifikat prestasi adalah 'senjata rahasia' penentu kelolosan SNBP selain nilai rapor.</p>
                                         </div>
                                     </div>
                                 )}
@@ -235,8 +361,24 @@ const SnbpSimulation = () => {
                                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                                             {['Teknologi', 'Bisnis', 'Kesehatan', 'Sosial', 'Seni'].map((interest) => (
                                                 <label key={interest} className="group cursor-pointer">
-                                                    <input type="checkbox" className="hidden" />
-                                                    <div className="p-4 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl flex flex-col items-center gap-3 text-center transition-all group-hover:border-blue-300 dark:group-hover:border-blue-500 group-hover:bg-blue-50 dark:group-hover:bg-blue-900/30 group-checked:border-blue-700 dark:group-checked:border-blue-500 group-checked:bg-blue-50 dark:group-checked:bg-blue-900/30">
+                                                    <input 
+                                                        type="checkbox" 
+                                                        className="hidden" 
+                                                        checked={preferences.interests.includes(interest)}
+                                                        onChange={() => {
+                                                            setPreferences(prev => ({
+                                                                ...prev,
+                                                                interests: prev.interests.includes(interest)
+                                                                    ? prev.interests.filter(i => i !== interest)
+                                                                    : [...prev.interests, interest]
+                                                            }));
+                                                        }}
+                                                    />
+                                                    <div className={`p-4 border rounded-2xl flex flex-col items-center gap-3 text-center transition-all ${
+                                                        preferences.interests.includes(interest) 
+                                                        ? 'border-blue-700 dark:border-blue-500 bg-blue-50 dark:bg-blue-900/30' 
+                                                        : 'bg-white dark:bg-slate-900 border-gray-200 dark:border-slate-800 hover:border-blue-300 dark:hover:border-blue-500'
+                                                    }`}>
                                                         <div className="w-10 h-10 rounded-xl bg-gray-50 dark:bg-slate-800 flex items-center justify-center text-gray-400 dark:text-slate-500 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:bg-white dark:group-hover:bg-slate-700 transition-colors">
                                                             <Heart size={20} />
                                                         </div>
@@ -249,11 +391,120 @@ const SnbpSimulation = () => {
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             <div className="space-y-2">
                                                 <label className="block text-sm font-bold text-gray-700 dark:text-slate-300">Preferensi Kota</label>
-                                                <input type="text" placeholder="Contoh: Bandung, Jakarta" className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-transparent focus:bg-white dark:focus:bg-slate-800 text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-500 focus:ring-4 focus:ring-blue-50 dark:focus:ring-blue-900/30 outline-none transition-all duration-300 focus:-translate-y-0.5 focus:shadow-lg focus:shadow-blue-500/10 placeholder-gray-400 dark:placeholder-slate-500" />
+                                                <input 
+                                                    type="text" 
+                                                    placeholder="Contoh: Bandung, Jakarta" 
+                                                    value={preferences.city}
+                                                    onChange={e => setPreferences({...preferences, city: e.target.value})}
+                                                    className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-transparent focus:bg-white dark:focus:bg-slate-800 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-50 dark:focus:ring-blue-900/30 outline-none transition-all duration-300" />
                                             </div>
                                             <div className="space-y-2">
                                                 <label className="block text-sm font-bold text-gray-700 dark:text-slate-300">PTN Favorit</label>
-                                                <input type="text" placeholder="Contoh: ITB, UI" className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-transparent focus:bg-white dark:focus:bg-slate-800 text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-500 focus:ring-4 focus:ring-blue-50 dark:focus:ring-blue-900/30 outline-none transition-all duration-300 focus:-translate-y-0.5 focus:shadow-lg focus:shadow-blue-500/10 placeholder-gray-400 dark:placeholder-slate-500" />
+                                                <input 
+                                                    type="text" 
+                                                    placeholder="Contoh: ITB, UI, UGM" 
+                                                    value={preferences.favoritePtn}
+                                                    onChange={e => setPreferences({...preferences, favoritePtn: e.target.value})}
+                                                    className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-transparent focus:bg-white dark:focus:bg-slate-800 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-50 dark:focus:ring-blue-900/30 outline-none transition-all duration-300" />
+                                            </div>
+                                        </div>
+
+                                        <hr className="border-gray-100 dark:border-slate-800" />
+
+                                        {/* Target Choices Section */}
+                                        <div className="space-y-6">
+                                            <h3 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                                                <MapPin size={20} className="text-blue-600" />
+                                                Target Pilihan SNBP
+                                            </h3>
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                                {selectedChoices.map((choice, idx) => (
+                                                    <div key={choice.id} className="p-6 rounded-3xl bg-blue-50/50 dark:bg-slate-800/50 border border-blue-100/50 dark:border-slate-700 space-y-4">
+                                                        <div className="flex justify-between items-center">
+                                                            <span className="text-xs font-black uppercase tracking-widest text-blue-600 dark:text-blue-400">{choice.label}</span>
+                                                            {(choice.univ || choice.major) && (
+                                                                <button 
+                                                                    onClick={() => setSelectedChoices(prev => prev.map(c => c.id === choice.id ? { ...c, univ: null, major: null } : c))}
+                                                                    className="text-[10px] font-bold text-red-500 hover:underline"
+                                                                >Reset</button>
+                                                            )}
+                                                        </div>
+
+                                                        {/* Univ Search */}
+                                                        <div className="relative">
+                                                            <div className="relative">
+                                                                <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
+                                                                <input 
+                                                                    type="text" 
+                                                                    placeholder="Cari PTN..." 
+                                                                    value={choice.univ ? choice.univ.nama : (activeUnivSearch.id === choice.id ? activeUnivSearch.term : "")}
+                                                                    readOnly={!!choice.univ}
+                                                                    onChange={(e) => setActiveUnivSearch({ id: choice.id, term: e.target.value })}
+                                                                    onFocus={() => setActiveUnivSearch({ id: choice.id, term: "" })}
+                                                                    className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+                                                                />
+                                                            </div>
+                                                            {!choice.univ && activeUnivSearch.id === choice.id && activeUnivSearch.term.length > 1 && (
+                                                                <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-2xl shadow-2xl z-50 max-h-60 overflow-y-auto">
+                                                                    {allUniversities
+                                                                        .filter(u => u.nama.toLowerCase().includes(activeUnivSearch.term.toLowerCase()))
+                                                                        .slice(0, 10)
+                                                                        .map(u => (
+                                                                            <button 
+                                                                                key={u.id}
+                                                                                onClick={() => {
+                                                                                    setSelectedChoices(prev => prev.map(c => c.id === choice.id ? { ...c, univ: u, major: null } : c));
+                                                                                    setActiveUnivSearch({ id: null, term: "" });
+                                                                                }}
+                                                                                className="w-full text-left px-4 py-3 text-sm hover:bg-blue-50 dark:hover:bg-slate-800 transition-colors border-b border-gray-50 dark:border-slate-800 last:border-0"
+                                                                            >
+                                                                                <span className="font-bold">{u.nama}</span>
+                                                                                <p className="text-[10px] text-gray-500">{u.kota}</p>
+                                                                            </button>
+                                                                        ))
+                                                                    }
+                                                                </div>
+                                                            )}
+                                                        </div>
+
+                                                        {/* Major Search */}
+                                                        <div className="relative">
+                                                            <div className="relative">
+                                                                <GraduationCap className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
+                                                                <input 
+                                                                    type="text" 
+                                                                    placeholder={choice.univ ? "Cari Jurusan..." : "Pilih PTN dulu"} 
+                                                                    disabled={!choice.univ}
+                                                                    value={choice.major ? choice.major.nama : (activeMajorSearch.id === choice.id ? activeMajorSearch.term : "")}
+                                                                    readOnly={!!choice.major}
+                                                                    onChange={(e) => setActiveMajorSearch({ id: choice.id, term: e.target.value })}
+                                                                    onFocus={() => setActiveMajorSearch({ id: choice.id, term: "" })}
+                                                                    className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm focus:ring-2 focus:ring-blue-500 outline-none disabled:opacity-50"
+                                                                />
+                                                            </div>
+                                                            {!choice.major && choice.univ && activeMajorSearch.id === choice.id && (
+                                                                <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-2xl shadow-2xl z-50 max-h-60 overflow-y-auto">
+                                                                    {choice.univ.jurusan
+                                                                        .filter(m => m.nama.toLowerCase().includes(activeMajorSearch.term.toLowerCase()))
+                                                                        .map(m => (
+                                                                            <button 
+                                                                                key={m.kode}
+                                                                                onClick={() => {
+                                                                                    setSelectedChoices(prev => prev.map(c => c.id === choice.id ? { ...c, major: m } : c));
+                                                                                    setActiveMajorSearch({ id: null, term: "" });
+                                                                                }}
+                                                                                className="w-full text-left px-4 py-3 text-sm hover:bg-blue-50 dark:hover:bg-slate-800 transition-colors border-b border-gray-50 dark:border-slate-800 last:border-0"
+                                                                            >
+                                                                                <span className="font-bold">{m.nama}</span>
+                                                                                <p className="text-[10px] text-gray-500">{m.jenjang} • Daya Tampung: {m.daya_tampung_2026}</p>
+                                                                            </button>
+                                                                        ))
+                                                                    }
+                                                                </div>
+                                                            )}
+                                                        </div>
+                                                    </div>
+                                                ))}
                                             </div>
                                         </div>
                                     </div>
@@ -327,14 +578,9 @@ const SnbpSimulation = () => {
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-gray-100 dark:divide-slate-800">
-                                        {[
-                                            { ptn: 'ITB', major: 'Teknik Informatika', mine: '92.5', avg: '94.2', label: 'Mungkin', color: 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400' },
-                                            { ptn: 'UI', major: 'Ilmu Komputer', mine: '92.5', avg: '93.5', label: 'Aman', color: 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400' },
-                                            { ptn: 'UGM', major: 'Kedokteran', mine: '92.5', avg: '95.8', label: 'Beresiko', color: 'bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400' },
-                                            { ptn: 'UNPAD', major: 'Psikologi', mine: '92.5', avg: '91.0', label: 'Aman', color: 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400' },
-                                        ].map((row, i) => (
+                                        {simulationResults.map((row, i) => (
                                             <tr key={i} className="hover:bg-blue-50/30 dark:hover:bg-slate-800/50 transition-colors">
-                                                <td className="px-8 py-5"><span className="font-bold text-gray-800 dark:text-white">{row.ptn}</span></td>
+                                                <td className="px-8 py-5"><span className="font-bold text-gray-800 dark:text-white">{row.ptnCode}</span></td>
                                                 <td className="px-8 py-5 text-gray-600 dark:text-slate-400">{row.major}</td>
                                                 <td className="px-8 py-5 font-bold text-blue-700 dark:text-blue-400">{row.mine}</td>
                                                 <td className="px-8 py-5 text-gray-500 dark:text-slate-500">{row.avg}</td>
@@ -356,16 +602,11 @@ const SnbpSimulation = () => {
                                     <h3 className="text-xl font-bold text-gray-900 dark:text-white">Perbandingan Nilai</h3>
                                 </div>
                                 <div className="h-64 flex items-end gap-6 px-4">
-                                    {[
-                                        { label: 'Kamu', value: 92, color: 'bg-blue-700 dark:bg-blue-500' },
-                                        { label: 'ITB', value: 94, color: 'bg-gray-200 dark:bg-slate-700' },
-                                        { label: 'UI', value: 93, color: 'bg-gray-200 dark:bg-slate-700' },
-                                        { label: 'UGM', value: 95, color: 'bg-gray-200 dark:bg-slate-700' },
-                                    ].map((item, i) => (
+                                    {[{ label: 'Kamu', value: userAvgGrade, color: 'bg-blue-700 dark:bg-blue-500' }, ...simulationResults.slice(0, 3).map(r => ({ label: r.ptnCode, value: Number(r.avg), color: 'bg-gray-200 dark:bg-slate-700' }))].map((item, i) => (
                                         <div key={i} className="flex-1 flex flex-col items-center gap-3 group">
                                             <div className="w-full relative">
                                                 <div className={`w-full rounded-t-lg transition-all duration-700 group-hover:opacity-80 ${item.color}`} style={{ height: `${item.value}%` }}></div>
-                                                <span className="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] font-bold text-gray-400 dark:text-slate-400">{item.value}%</span>
+                                                <span className="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] font-bold text-gray-400 dark:text-slate-400">{Number(item.value).toFixed(1)}</span>
                                             </div>
                                             <span className="text-xs font-bold text-gray-500 dark:text-slate-400">{item.label}</span>
                                         </div>
@@ -388,27 +629,23 @@ const SnbpSimulation = () => {
                                 <p className="text-gray-500 dark:text-gray-400">Jurusan yang paling sesuai dengan kualifikasi dan minat kamu.</p>
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                                {[
-                                    { ptn: 'UI', major: 'Sistem Informasi', chance: 'Tinggi', chancePct: 85, tags: ['Favorit', 'Masa Depan'] },
-                                    { ptn: 'UGM', major: 'Teknologi Informasi', chance: 'Sedang', chancePct: 55, tags: ['Prestisius'] },
-                                    { ptn: 'ITS', major: 'Teknik Informatika', chance: 'Tinggi', chancePct: 80, tags: ['Terbaik'] },
-                                ].map((rec, i) => (
+                                {simulationResults.slice(0, 3).map((rec, i) => (
                                     <div key={i} className="group bg-white dark:bg-slate-900 p-6 rounded-3xl border border-gray-100 dark:border-slate-800 shadow-sm hover:shadow-2xl hover:shadow-blue-900/10 dark:hover:shadow-blue-900/20 hover:-translate-y-2 hover:border-blue-100 dark:hover:border-blue-600/50 transition-all duration-300">
                                         <div className="flex justify-between items-start mb-6">
-                                            <div className="w-12 h-12 bg-blue-50 dark:bg-slate-800 rounded-xl flex items-center justify-center font-bold text-blue-700 dark:text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">{rec.ptn}</div>
-                                            <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-md ${rec.chance === 'Tinggi' ? 'text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/30' : 'text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-900/30'}`}>Peluang {rec.chance}</span>
+                                            <div className="w-12 h-12 bg-blue-50 dark:bg-slate-800 rounded-xl flex items-center justify-center font-bold text-blue-700 dark:text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">{rec.ptnCode}</div>
+                                            <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-md ${rec.label === 'Aman' || rec.label === 'Mungkin' ? 'text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/30' : 'text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-900/30'}`}>Peluang {rec.label}</span>
                                         </div>
                                         <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-1">{rec.major}</h4>
-                                        <p className="text-sm text-gray-500 dark:text-slate-400 mb-4 font-medium">Universitas Nasional</p>
+                                        <p className="text-sm text-gray-500 dark:text-slate-400 mb-4 font-medium">{rec.ptn}</p>
 
                                         {/* Opportunity Score Indicator */}
                                         <div className="mb-6 space-y-1.5">
                                             <div className="flex justify-between text-[10px] font-bold text-gray-400">
                                                 <span>Skor Peluang</span>
-                                                <span className={rec.chance === 'Tinggi' ? 'text-green-600' : 'text-orange-600'}>{rec.chancePct}%</span>
+                                                <span className={Number(rec.chancePct) >= 70 ? 'text-green-600' : 'text-orange-600'}>{rec.chancePct}%</span>
                                             </div>
                                             <div className="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                                                <div className={`h-full rounded-full transition-all duration-1000 ${rec.chance === 'Tinggi' ? 'bg-green-500' : 'bg-orange-500'}`} style={{ width: `${rec.chancePct}%` }}></div>
+                                                <div className={`h-full rounded-full transition-all duration-1000 ${Number(rec.chancePct) >= 70 ? 'bg-green-500' : 'bg-orange-500'}`} style={{ width: `${rec.chancePct}%` }}></div>
                                             </div>
                                         </div>
 
@@ -420,6 +657,16 @@ const SnbpSimulation = () => {
                                     </div>
                                 ))}
                             </div>
+
+                            {/* AI SNBP Consultant Integration */}
+                            {simulationResults.length > 0 && (
+                                <AISnbpConsultant 
+                                    academicProfile={academicProfile} 
+                                    grades={grades} 
+                                    targetMajor={simulationResults[0].major} 
+                                    targetUniv={simulationResults[0].ptn} 
+                                />
+                            )}
                         </div>
 
                         <div className="mt-24 pt-16 border-t border-gray-100 dark:border-slate-800 space-y-12">

@@ -4,9 +4,17 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/CekAjaDulu/',
   plugins: [
     react(),
     tailwindcss(),
   ],
+  server: {
+    // Proxy /api/* to Vercel dev server during local development
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+      },
+    },
+  },
 })
