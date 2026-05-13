@@ -13,6 +13,7 @@ const AIConsultant = ({ scores, dominantCluster, top3, mode = 'interest', analys
     const handleGenerate = async () => {
         setLoading(true);
         setError(null);
+        setShowDonationModal(true); // Tampilkan langsung saat klik
         try {
             let text = '';
             if (mode === 'interest') {
@@ -21,11 +22,6 @@ const AIConsultant = ({ scores, dominantCluster, top3, mode = 'interest', analys
                 text = await generateAcademicAnalysis(analysisData, interestScores);
             }
             setAnalysis(text);
-            
-            // Show donation modal after a short delay
-            setTimeout(() => {
-                setShowDonationModal(true);
-            }, 1500);
         } catch (err) {
             setError(err.message);
         } finally {
@@ -33,11 +29,9 @@ const AIConsultant = ({ scores, dominantCluster, top3, mode = 'interest', analys
         }
     };
 
-    // Auto generate on first load if analysis is empty
+    // No auto-generate on first load
     useEffect(() => {
-        if (!analysis && !loading && !error) {
-            handleGenerate();
-        }
+        // user must click 'Mulai Analisis AI' button
     }, []);
 
     return (
@@ -95,9 +89,26 @@ const AIConsultant = ({ scores, dominantCluster, top3, mode = 'interest', analys
                     </div>
                 ) : (
                     <div className="prose prose-sm dark:prose-invert max-w-none text-gray-700 dark:text-slate-300 leading-relaxed">
-                        <ReactMarkdown>
-                            {analysis || "Klik tombol untuk memulai analisis AI."}
-                        </ReactMarkdown>
+                        {analysis ? (
+                            <ReactMarkdown>
+                                {analysis}
+                            </ReactMarkdown>
+                        ) : (
+                            <div className="flex flex-col items-center justify-center py-8">
+                                <Sparkles className="w-12 h-12 text-blue-500/50 mb-4" />
+                                <h4 className="text-lg font-bold text-gray-800 dark:text-white mb-2">Siap untuk Analisis AI?</h4>
+                                <p className="text-sm text-center text-gray-500 dark:text-slate-400 mb-6 max-w-sm">
+                                    Dapatkan rekomendasi jurusan dan panduan langkah selanjutnya yang dipersonalisasi untukmu.
+                                </p>
+                                <button 
+                                    onClick={handleGenerate}
+                                    className="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white rounded-xl font-bold text-sm shadow-lg shadow-blue-500/30 transition-all flex items-center gap-2 transform hover:-translate-y-1"
+                                >
+                                    <Sparkles size={16} />
+                                    Mulai Analisis AI
+                                </button>
+                            </div>
+                        )}
                     </div>
                 )}
 

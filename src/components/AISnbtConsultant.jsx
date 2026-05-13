@@ -13,6 +13,7 @@ const AISnbtConsultant = ({ activeChoices, utbkScore, getChance, getStatusInfo }
     const handleGenerate = async () => {
         setLoading(true);
         setError(null);
+        setShowDonationModal(true); // Tampilkan langsung saat klik
         try {
             // Format data for AI
             const choicesData = activeChoices.map(c => {
@@ -30,11 +31,6 @@ const AISnbtConsultant = ({ activeChoices, utbkScore, getChance, getStatusInfo }
 
             const result = await generateSnbtAnalysis(utbkScore, choicesData);
             setAnalysis(result);
-            
-            // Show donation modal after a short delay
-            setTimeout(() => {
-                setShowDonationModal(true);
-            }, 1500);
         } catch (err) {
             setError(err.message || 'Gagal menghasilkan analisis strategi SNBT.');
         } finally {
@@ -42,10 +38,9 @@ const AISnbtConsultant = ({ activeChoices, utbkScore, getChance, getStatusInfo }
         }
     };
 
+    // No auto-generate on load
     useEffect(() => {
-        if (!analysis && !loading && !error && activeChoices.length > 0) {
-            handleGenerate();
-        }
+        // user must click 'Mulai Analisis AI' button
     }, [activeChoices, utbkScore]);
 
     return (
@@ -114,7 +109,22 @@ const AISnbtConsultant = ({ activeChoices, utbkScore, getChance, getStatusInfo }
                             {analysis}
                         </ReactMarkdown>
                     </div>
-                ) : null}
+                ) : (
+                    <div className="flex flex-col items-center justify-center py-8">
+                        <Target className="w-12 h-12 text-indigo-500/50 mb-4" />
+                        <h4 className="text-lg font-bold text-white mb-2">Strategi Formasi SNBT</h4>
+                        <p className="text-sm text-center text-indigo-200/70 mb-6 max-w-sm">
+                            Dapatkan rekomendasi strategi pemilihan jurusan yang tepat berdasarkan nilai UTBK kamu.
+                        </p>
+                        <button 
+                            onClick={handleGenerate}
+                            className="px-6 py-3 bg-gradient-to-r from-indigo-500 to-blue-500 hover:from-indigo-400 hover:to-blue-400 text-white rounded-xl font-bold text-sm shadow-lg shadow-indigo-500/30 transition-all flex items-center gap-2 transform hover:-translate-y-1"
+                        >
+                            <Sparkles size={16} />
+                            Mulai Analisis AI
+                        </button>
+                    </div>
+                )}
             </div>
         </div>
         

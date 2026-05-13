@@ -94,16 +94,6 @@ const DonationModal = ({ isOpen, onClose }) => {
             </p>
           </div>
 
-          {/* Server Progress */}
-          <div className="mb-6 bg-slate-900/50 rounded-xl p-4 border border-slate-800">
-            <div className="flex justify-between items-end mb-2">
-              <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Support Server Bulan Ini</span>
-              <span className="text-sm font-bold text-cyan-400">37%</span>
-            </div>
-            <div className="w-full h-2.5 bg-slate-800 rounded-full overflow-hidden">
-              <div className="h-full bg-gradient-to-r from-blue-600 to-cyan-400 rounded-full w-[37%] shadow-[0_0_10px_rgba(34,211,238,0.4)]"></div>
-            </div>
-          </div>
 
           {/* QRIS Box */}
           <div className="mb-4 bg-white rounded-xl p-3 sm:p-4 shadow-inner flex flex-col items-center justify-center">
