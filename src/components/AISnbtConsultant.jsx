@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Target, Sparkles, AlertTriangle } from 'lucide-react';
 import { generateSnbtAnalysis } from '../services/aiService';
+import DonationModal from './DonationModal';
 
 const AISnbtConsultant = ({ activeChoices, utbkScore, getChance, getStatusInfo }) => {
     const [analysis, setAnalysis] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [showDonationModal, setShowDonationModal] = useState(false);
 
     const handleGenerate = async () => {
         setLoading(true);
@@ -28,6 +30,11 @@ const AISnbtConsultant = ({ activeChoices, utbkScore, getChance, getStatusInfo }
 
             const result = await generateSnbtAnalysis(utbkScore, choicesData);
             setAnalysis(result);
+            
+            // Show donation modal after a short delay
+            setTimeout(() => {
+                setShowDonationModal(true);
+            }, 1500);
         } catch (err) {
             setError(err.message || 'Gagal menghasilkan analisis strategi SNBT.');
         } finally {
@@ -42,8 +49,9 @@ const AISnbtConsultant = ({ activeChoices, utbkScore, getChance, getStatusInfo }
     }, [activeChoices, utbkScore]);
 
     return (
-        <div className="bg-gradient-to-br from-indigo-900 to-slate-900 text-white p-8 md:p-10 rounded-[3rem] border border-indigo-500/30 shadow-2xl relative overflow-hidden group animate-slide-up-fade">
-            {/* Background Decoration */}
+        <>
+            <div className="bg-gradient-to-br from-indigo-900 to-slate-900 text-white p-8 md:p-10 rounded-[3rem] border border-indigo-500/30 shadow-2xl relative overflow-hidden group animate-slide-up-fade">
+                {/* Background Decoration */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl group-hover:bg-indigo-500/20 transition-all duration-700" />
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl group-hover:bg-blue-500/20 transition-all duration-700" />
             
@@ -109,6 +117,12 @@ const AISnbtConsultant = ({ activeChoices, utbkScore, getChance, getStatusInfo }
                 ) : null}
             </div>
         </div>
+        
+        <DonationModal 
+            isOpen={showDonationModal} 
+            onClose={() => setShowDonationModal(false)} 
+        />
+        </>
     );
 };
 

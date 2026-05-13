@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { generateAnalysis, generateAcademicAnalysis } from '../services/aiService';
 import { Sparkles, Loader2, AlertCircle } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
+import DonationModal from './DonationModal';
 
 const AIConsultant = ({ scores, dominantCluster, top3, mode = 'interest', analysisData = null, interestScores = null }) => {
     const [analysis, setAnalysis] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [showDonationModal, setShowDonationModal] = useState(false);
 
     const handleGenerate = async () => {
         setLoading(true);
@@ -19,6 +21,11 @@ const AIConsultant = ({ scores, dominantCluster, top3, mode = 'interest', analys
                 text = await generateAcademicAnalysis(analysisData, interestScores);
             }
             setAnalysis(text);
+            
+            // Show donation modal after a short delay
+            setTimeout(() => {
+                setShowDonationModal(true);
+            }, 1500);
         } catch (err) {
             setError(err.message);
         } finally {
@@ -34,8 +41,9 @@ const AIConsultant = ({ scores, dominantCluster, top3, mode = 'interest', analys
     }, []);
 
     return (
-        <div className="bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-slate-900 dark:to-blue-950/30 p-8 rounded-3xl border border-blue-100 dark:border-blue-900/50 shadow-xl relative overflow-hidden group">
-            {/* Background Decoration */}
+        <>
+            <div className="bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-slate-900 dark:to-blue-950/30 p-8 rounded-3xl border border-blue-100 dark:border-blue-900/50 shadow-xl relative overflow-hidden group">
+                {/* Background Decoration */}
             <div className="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-blue-400/10 rounded-full blur-3xl group-hover:bg-blue-400/20 transition-all duration-700" />
             
             <div className="relative z-10 space-y-6">
@@ -107,6 +115,12 @@ const AIConsultant = ({ scores, dominantCluster, top3, mode = 'interest', analys
                 </div>
             </div>
         </div>
+
+        <DonationModal 
+            isOpen={showDonationModal} 
+            onClose={() => setShowDonationModal(false)} 
+        />
+    </>
     );
 };
 

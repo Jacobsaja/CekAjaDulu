@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Award, Sparkles, AlertTriangle } from 'lucide-react';
 import { generateSnbpAnalysis } from '../services/aiService';
+import DonationModal from './DonationModal';
 
 const AISnbpConsultant = ({ academicProfile, grades, targetMajor, targetUniv }) => {
     const [analysis, setAnalysis] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [showDonationModal, setShowDonationModal] = useState(false);
 
     const calculateGradesStats = () => {
         let totalSum = 0;
@@ -59,6 +61,11 @@ const AISnbpConsultant = ({ academicProfile, grades, targetMajor, targetUniv }) 
 
             const result = await generateSnbpAnalysis(profileData, targetMajor, targetUniv);
             setAnalysis(result);
+            
+            // Show donation modal after a short delay
+            setTimeout(() => {
+                setShowDonationModal(true);
+            }, 1500);
         } catch (err) {
             setError(err.message || 'Gagal menghasilkan analisis SNBP.');
         } finally {
@@ -73,8 +80,9 @@ const AISnbpConsultant = ({ academicProfile, grades, targetMajor, targetUniv }) 
     }, [academicProfile, grades, targetMajor]);
 
     return (
-        <div className="bg-gradient-to-br from-teal-900 to-slate-900 text-white p-8 md:p-10 rounded-[3rem] border border-teal-500/30 shadow-2xl relative overflow-hidden group animate-slide-up-fade mt-10">
-            {/* Background Decoration */}
+        <>
+            <div className="bg-gradient-to-br from-teal-900 to-slate-900 text-white p-8 md:p-10 rounded-[3rem] border border-teal-500/30 shadow-2xl relative overflow-hidden group animate-slide-up-fade mt-10">
+                {/* Background Decoration */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl group-hover:bg-teal-500/20 transition-all duration-700" />
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl group-hover:bg-emerald-500/20 transition-all duration-700" />
             
@@ -139,6 +147,12 @@ const AISnbpConsultant = ({ academicProfile, grades, targetMajor, targetUniv }) 
                 ) : null}
             </div>
         </div>
+        
+        <DonationModal 
+            isOpen={showDonationModal} 
+            onClose={() => setShowDonationModal(false)} 
+        />
+    </>
     );
 };
 
