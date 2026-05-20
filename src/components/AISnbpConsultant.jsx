@@ -4,63 +4,19 @@ import { Award, Sparkles, AlertTriangle } from 'lucide-react';
 import { generateSnbpAnalysis } from '../services/aiService';
 import DonationModal from './DonationModal';
 
-const AISnbpConsultant = ({ academicProfile, grades, targetMajor, targetUniv }) => {
+const AISnbpConsultant = ({ profileSummary, targetMajors, avgScore, achievements, filterResults }) => {
     const [analysis, setAnalysis] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [showDonationModal, setShowDonationModal] = useState(false);
-
-    const calculateGradesStats = () => {
-        let totalSum = 0;
-        let totalCount = 0;
-        let semAverages = {};
-
-        // Calculate average per semester to find trend
-        [1, 2, 3, 4, 5].forEach(sem => {
-            let semSum = 0;
-            let semCount = 0;
-            Object.keys(grades).forEach(sub => {
-                const val = Number(grades[sub][sem]);
-                if (val > 0) {
-                    semSum += val;
-                    semCount++;
-                    totalSum += val;
-                    totalCount++;
-                }
-            });
-            if (semCount > 0) {
-                semAverages[sem] = semSum / semCount;
-            }
-        });
-
-        const avgGrade = totalCount > 0 ? (totalSum / totalCount).toFixed(2) : 0;
-        
-        let gradeTrend = "Stabil";
-        const availableSems = Object.keys(semAverages).sort();
-        if (availableSems.length >= 2) {
-            const first = semAverages[availableSems[0]];
-            const last = semAverages[availableSems[availableSems.length - 1]];
-            if (last - first > 3) gradeTrend = "Naik Signifikan";
-            else if (last - first > 0) gradeTrend = "Naik Perlahan";
-            else if (last - first < -3) gradeTrend = "Turun Signifikan";
-            else if (last - first < 0) gradeTrend = "Turun Perlahan";
-        }
-
-        return { avgGrade, gradeTrend };
-    };
 
     const handleGenerate = async () => {
         setLoading(true);
         setError(null);
         setShowDonationModal(true); // Tampilkan langsung saat klik
         try {
-            const stats = calculateGradesStats();
-            const profileData = {
-                ...academicProfile,
-                ...stats
-            };
-
-            const result = await generateSnbpAnalysis(profileData, targetMajor, targetUniv);
+            const payload = { profileSummary, targetMajors, avgScore, achievements, filterResults };
+            const result = await generateSnbpAnalysis(payload);
             setAnalysis(result);
         } catch (err) {
             setError(err.message || 'Gagal menghasilkan analisis SNBP.');
@@ -69,10 +25,9 @@ const AISnbpConsultant = ({ academicProfile, grades, targetMajor, targetUniv }) 
         }
     };
 
-    // No auto-generate on load
     useEffect(() => {
         // user must click 'Mulai Analisis AI' button
-    }, [academicProfile, grades, targetMajor]);
+    }, []);
 
     return (
         <>

@@ -43,11 +43,11 @@ export const generateSnbtAnalysis = async (utbkScore, choicesData) => {
   return data.text;
 };
 
-export const generateSnbpAnalysis = async (profileData, targetMajor, targetUniv) => {
+export const generateSnbpAnalysis = async (payload) => {
   const res = await fetch('/api/snbp-analysis', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ profileData, targetMajor, targetUniv }),
+    body: JSON.stringify({ payload }),
   });
   if (!res.ok) {
     const err = await res.json().catch(() => ({}));
