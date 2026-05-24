@@ -10,13 +10,13 @@ const MANDATORY_SUBJECTS = ["Matematika", "Bahasa Indonesia", "Bahasa Inggris"];
 
 const SnbpSimulation = () => {
     const [step, setStep] = useState(1);
-    
+
     // Step 1: Profil Siswa
     const [profile, setProfile] = useState({ name: '', school: '' });
-    
+
     // Step 2: Target Kampus
-    const [targets, setTargets] = useState({ 
-        majors: [], 
+    const [targets, setTargets] = useState({
+        majors: [],
         cities: [],
         currentMajor: '',
         currentCity: ''
@@ -49,8 +49,8 @@ const SnbpSimulation = () => {
     const [customSubjects, setCustomSubjects] = useState(['', '', '', '', '']);
     const [grades, setGrades] = useState(() => {
         const init = {};
-        MANDATORY_SUBJECTS.forEach(s => init[s] = {1:'', 2:'', 3:'', 4:'', 5:''});
-        [0, 1, 2, 3, 4].forEach(i => init[`custom_${i}`] = {1:'', 2:'', 3:'', 4:'', 5:''});
+        MANDATORY_SUBJECTS.forEach(s => init[s] = { 1: '', 2: '', 3: '', 4: '', 5: '' });
+        [0, 1, 2, 3, 4].forEach(i => init[`custom_${i}`] = { 1: '', 2: '', 3: '', 4: '', 5: '' });
         return init;
     });
 
@@ -91,13 +91,20 @@ const SnbpSimulation = () => {
         let totalSum = 0;
         let totalCount = 0;
         let subjectAverages = {};
-        
-        [...MANDATORY_SUBJECTS, ...[0,1,2,3,4].map(i => `custom_${i}`)].forEach(sub => {
+
+        const activeCustomIndices = [0, 1, 2, 3, 4].filter(i => customSubjects[i].trim() !== '');
+        const activeSubjects = [
+            ...MANDATORY_SUBJECTS,
+            ...activeCustomIndices.map(i => `custom_${i}`)
+        ];
+
+        activeSubjects.forEach(sub => {
             let subSum = 0;
             let subCount = 0;
             SEMESTERS.forEach(sem => {
-                const val = Number(grades[sub][sem]);
-                if (val > 0) {
+                const rawVal = grades[sub][sem];
+                if (rawVal !== '' && rawVal != null) {
+                    const val = Number(rawVal);
                     subSum += val;
                     subCount++;
                     totalSum += val;
@@ -105,13 +112,13 @@ const SnbpSimulation = () => {
                 }
             });
             if (subCount > 0) {
-                const name = sub.startsWith('custom_') ? customSubjects[parseInt(sub.split('_')[1])] || 'Mapel Tambahan' : sub;
+                const name = sub.startsWith('custom_') ? customSubjects[parseInt(sub.split('_')[1])] : sub;
                 subjectAverages[name] = subSum / subCount;
             }
         });
 
         const avgScore = totalCount > 0 ? (totalSum / totalCount) : 0;
-        
+
         let strongestSubject = "Belum Ada";
         let maxAvg = 0;
         Object.entries(subjectAverages).forEach(([name, avg]) => {
@@ -125,27 +132,27 @@ const SnbpSimulation = () => {
         let matched = [];
         allUniversities.forEach(univ => {
             let cityMatch = targets.cities.some(c => univ.kota?.toLowerCase().includes(c.toLowerCase()));
-            
+
             univ.jurusan.forEach(major => {
                 let majorMatch = targets.majors.some(m => major.nama.toLowerCase().includes(m.toLowerCase()));
-                
+
                 // If any targets are provided, filter by them. If none, include top UI/ITB/UGM majors as fallback
                 let isValid = false;
                 if (targets.cities.length > 0 && targets.majors.length > 0) isValid = cityMatch || majorMatch;
                 else if (targets.cities.length > 0) isValid = cityMatch;
                 else if (targets.majors.length > 0) isValid = majorMatch;
                 else if (['ui', 'ugm', 'itb'].includes(univ.id)) isValid = true;
-                
+
                 if (isValid) {
                     // Calculate internal score
                     let score = 0;
                     if (cityMatch) score += 3;
                     if (majorMatch) score += 5;
                     score += (avgScore / 20);
-                    
+
                     if (achievements.length > 0) score += 2;
                     if (academic.schoolType === 'SMK' && major.nama.toLowerCase().includes('terapan')) score += 2;
-                    
+
                     const utbkMin = major.nilai_min_utbk || 500;
                     let competitiveness = 'Peluang Terbuka';
                     if (utbkMin > 650) competitiveness = 'Sangat Kompetitif';
@@ -171,7 +178,7 @@ const SnbpSimulation = () => {
             strongestSubject,
             matches: finalMatches
         });
-        
+
         setTimeout(() => {
             document.getElementById('results-section')?.scrollIntoView({ behavior: 'smooth' });
         }, 100);
@@ -189,15 +196,28 @@ const SnbpSimulation = () => {
             return true;
         }
         if (step === 4) {
-            for (const sub of MANDATORY_SUBJECTS) {
-                for (const sem of SEMESTERS) {
-                    if (grades[sub][sem] === '' || grades[sub][sem] == null) return false;
+            // Find the highest semester that has at least one grade entered (minimum required is semester 2)
+            let highestSem = 2;
+
+            const activeCustomIndices = [0, 1, 2, 3, 4].filter(i => customSubjects[i].trim() !== '');
+            const activeSubjects = [
+                ...MANDATORY_SUBJECTS,
+                ...activeCustomIndices.map(i => `custom_${i}`)
+            ];
+
+            // Check if there is any data entered in semester 3, 4, or 5
+            for (const sem of [3, 4, 5]) {
+                const hasAnyData = activeSubjects.some(sub => grades[sub]?.[sem] !== '' && grades[sub]?.[sem] != null);
+                if (hasAnyData) {
+                    highestSem = sem;
                 }
             }
-            for (let i = 0; i < 5; i++) {
-                if (customSubjects[i].trim() !== '') {
-                    for (const sem of SEMESTERS) {
-                        if (grades[`custom_${i}`][sem] === '' || grades[`custom_${i}`][sem] == null) return false;
+
+            // Validate that all semesters from 1 up to highestSem are fully filled for all active subjects
+            for (let sem = 1; sem <= highestSem; sem++) {
+                for (const sub of activeSubjects) {
+                    if (grades[sub]?.[sem] === '' || grades[sub]?.[sem] == null) {
+                        return false;
                     }
                 }
             }
@@ -268,11 +288,11 @@ const SnbpSimulation = () => {
                                         <div className="space-y-4">
                                             <div>
                                                 <label className="block text-sm font-bold text-gray-700 dark:text-slate-300 mb-2">Nama Lengkap</label>
-                                                <input type="text" value={profile.name} onChange={e => setProfile({...profile, name: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-transparent dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-50 outline-none transition-all" placeholder="Contoh: Budi Santoso" />
+                                                <input type="text" value={profile.name} onChange={e => setProfile({ ...profile, name: e.target.value })} className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-transparent dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-50 outline-none transition-all" placeholder="Contoh: Budi Santoso" />
                                             </div>
                                             <div>
                                                 <label className="block text-sm font-bold text-gray-700 dark:text-slate-300 mb-2">Nama Sekolah</label>
-                                                <input type="text" value={profile.school} onChange={e => setProfile({...profile, school: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-transparent dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-50 outline-none transition-all" placeholder="Contoh: SMAN 1 Jakarta" />
+                                                <input type="text" value={profile.school} onChange={e => setProfile({ ...profile, school: e.target.value })} className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-transparent dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-50 outline-none transition-all" placeholder="Contoh: SMAN 1 Jakarta" />
                                             </div>
                                         </div>
                                     </div>
@@ -284,7 +304,7 @@ const SnbpSimulation = () => {
                                             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Target Kampus</h2>
                                             <p className="text-gray-500 text-sm">Apa jurusan dan kota impianmu? (Bisa isi lebih dari satu)</p>
                                         </div>
-                                        
+
                                         <div className="space-y-6">
                                             <div>
                                                 <label className="block text-sm font-bold text-gray-700 dark:text-slate-300 mb-2">Jurusan Impian</label>
@@ -296,11 +316,11 @@ const SnbpSimulation = () => {
                                                     ))}
                                                 </div>
                                                 <div className="flex gap-2">
-                                                    <input type="text" value={targets.currentMajor} onChange={e => setTargets({...targets, currentMajor: e.target.value})} onKeyPress={e => e.key === 'Enter' && addTarget('major')} className="flex-1 px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-transparent dark:text-white focus:border-blue-500 outline-none" placeholder="Ketik dan tekan Enter atau +... Contoh: Informatika" />
-                                                    <Button onClick={() => addTarget('major')} variant="secondary" className="px-4"><Plus size={20}/></Button>
+                                                    <input type="text" value={targets.currentMajor} onChange={e => setTargets({ ...targets, currentMajor: e.target.value })} onKeyPress={e => e.key === 'Enter' && addTarget('major')} className="flex-1 px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-transparent dark:text-white focus:border-blue-500 outline-none" placeholder="Ketik dan tekan Enter atau +... Contoh: Informatika" />
+                                                    <Button onClick={() => addTarget('major')} variant="secondary" className="px-4"><Plus size={20} /></Button>
                                                 </div>
                                             </div>
-                                            
+
                                             <div>
                                                 <label className="block text-sm font-bold text-gray-700 dark:text-slate-300 mb-2">Kota / Provinsi Impian</label>
                                                 <div className="flex gap-2 mb-3 flex-wrap">
@@ -311,8 +331,8 @@ const SnbpSimulation = () => {
                                                     ))}
                                                 </div>
                                                 <div className="flex gap-2">
-                                                    <input type="text" value={targets.currentCity} onChange={e => setTargets({...targets, currentCity: e.target.value})} onKeyPress={e => e.key === 'Enter' && addTarget('city')} className="flex-1 px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-transparent dark:text-white focus:border-blue-500 outline-none" placeholder="Ketik dan tekan Enter atau +... Contoh: Bandung" />
-                                                    <Button onClick={() => addTarget('city')} variant="secondary" className="px-4"><Plus size={20}/></Button>
+                                                    <input type="text" value={targets.currentCity} onChange={e => setTargets({ ...targets, currentCity: e.target.value })} onKeyPress={e => e.key === 'Enter' && addTarget('city')} className="flex-1 px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-transparent dark:text-white focus:border-blue-500 outline-none" placeholder="Ketik dan tekan Enter atau +... Contoh: Bandung" />
+                                                    <Button onClick={() => addTarget('city')} variant="secondary" className="px-4"><Plus size={20} /></Button>
                                                 </div>
                                             </div>
                                         </div>
@@ -328,27 +348,27 @@ const SnbpSimulation = () => {
                                         <div className="space-y-4">
                                             <div>
                                                 <label className="block text-sm font-bold text-gray-700 dark:text-slate-300 mb-2">Jenis Sekolah</label>
-                                                <select value={academic.schoolType} onChange={e => setAcademic({...academic, schoolType: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-gray-900 dark:text-white outline-none">
+                                                <select value={academic.schoolType} onChange={e => setAcademic({ ...academic, schoolType: e.target.value })} className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-gray-900 dark:text-white outline-none">
                                                     <option value="SMA">SMA</option>
                                                     <option value="SMK">SMK</option>
                                                 </select>
                                             </div>
-                                            
+
                                             {academic.schoolType === 'SMA' && (
                                                 <div>
                                                     <label className="block text-sm font-bold text-gray-700 dark:text-slate-300 mb-2">Jurusan SMA</label>
-                                                    <select value={academic.smaMajor} onChange={e => setAcademic({...academic, smaMajor: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-gray-900 dark:text-white outline-none">
+                                                    <select value={academic.smaMajor} onChange={e => setAcademic({ ...academic, smaMajor: e.target.value })} className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-gray-900 dark:text-white outline-none">
                                                         <option value="IPA">IPA / MIPA</option>
                                                         <option value="IPS">IPS</option>
                                                         <option value="Bahasa">Bahasa</option>
                                                     </select>
                                                 </div>
                                             )}
-                                            
+
                                             {academic.schoolType === 'SMK' && (
                                                 <div>
                                                     <label className="block text-sm font-bold text-gray-700 dark:text-slate-300 mb-2">Jurusan SMK</label>
-                                                    <input type="text" value={academic.smkMajor} onChange={e => setAcademic({...academic, smkMajor: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-transparent dark:text-white outline-none focus:border-blue-500" placeholder="Contoh: Teknik Komputer Jaringan" />
+                                                    <input type="text" value={academic.smkMajor} onChange={e => setAcademic({ ...academic, smkMajor: e.target.value })} className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-transparent dark:text-white outline-none focus:border-blue-500" placeholder="Contoh: Teknik Komputer Jaringan" />
                                                 </div>
                                             )}
                                         </div>
@@ -360,10 +380,10 @@ const SnbpSimulation = () => {
                                         <div className="flex justify-between items-end">
                                             <div>
                                                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Nilai Akademik</h2>
-                                                <p className="text-gray-500 text-sm">Masukkan nilai 3 mapel wajib dan 5 mapel pilihanmu (Smt 1 - 5).</p>
+                                                <p className="text-gray-500 text-sm">Masukkan nilai 3 mapel wajib dan 5 mapel pilihanmu (Min. Smt 1-2).</p>
                                             </div>
                                         </div>
-                                        
+
                                         <div className="overflow-x-auto border border-gray-100 dark:border-slate-800 rounded-2xl shadow-sm">
                                             <table className="w-full text-left border-collapse min-w-[600px]">
                                                 <thead>
@@ -383,10 +403,10 @@ const SnbpSimulation = () => {
                                                             ))}
                                                         </tr>
                                                     ))}
-                                                    {[0,1,2,3,4].map(i => (
+                                                    {[0, 1, 2, 3, 4].map(i => (
                                                         <tr key={`custom_${i}`} className="bg-white dark:bg-slate-900">
                                                             <td className="p-2 sticky left-0 bg-white dark:bg-slate-900 border-r border-gray-100 dark:border-slate-800">
-                                                                <input type="text" placeholder={`Mapel Pilihan ${i+1}`} value={customSubjects[i]} onChange={e => handleCustomSubjectName(i, e.target.value)} className="w-full p-2 text-xs font-bold rounded-lg border border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-800 dark:text-white outline-none focus:border-blue-500" />
+                                                                <input type="text" placeholder={`Mapel Pilihan ${i + 1}`} value={customSubjects[i]} onChange={e => handleCustomSubjectName(i, e.target.value)} className="w-full p-2 text-xs font-bold rounded-lg border border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-800 dark:text-white outline-none focus:border-blue-500" />
                                                             </td>
                                                             {SEMESTERS.map(sem => (
                                                                 <td key={sem} className="p-1 border-r border-gray-100 dark:border-slate-800">
@@ -409,7 +429,7 @@ const SnbpSimulation = () => {
                                                 <p className="text-gray-500 text-sm">Tambahkan jika ada sertifikat/piagam kejuaraan.</p>
                                             </div>
                                             <Button onClick={addAchievement} variant="secondary" className="text-sm py-2 hidden sm:flex">
-                                                <Plus size={16} className="mr-1"/> Tambah
+                                                <Plus size={16} className="mr-1" /> Tambah
                                             </Button>
                                         </div>
 
@@ -418,14 +438,14 @@ const SnbpSimulation = () => {
                                                 <Award className="mx-auto text-gray-300 mb-2" size={32} />
                                                 <p className="text-gray-500 text-sm mb-4">Belum ada prestasi yang ditambahkan.</p>
                                                 <Button onClick={addAchievement} variant="secondary" className="text-sm py-2 mx-auto">
-                                                    <Plus size={16} className="mr-1"/> Tambah Prestasi
+                                                    <Plus size={16} className="mr-1" /> Tambah Prestasi
                                                 </Button>
                                             </div>
                                         ) : (
                                             <div className="space-y-4">
                                                 {achievements.map((ach, i) => (
                                                     <div key={i} className="flex flex-col md:flex-row gap-4 p-4 border border-gray-200 dark:border-slate-700 rounded-xl relative group bg-gray-50/50 dark:bg-slate-800/50">
-                                                        <button onClick={() => removeAchievement(i)} className="absolute top-2 right-2 p-1 text-gray-400 hover:text-red-500 transition-colors"><X size={16}/></button>
+                                                        <button onClick={() => removeAchievement(i)} className="absolute top-2 right-2 p-1 text-gray-400 hover:text-red-500 transition-colors"><X size={16} /></button>
                                                         <div className="flex-1">
                                                             <label className="text-xs font-bold text-gray-500 mb-1 block">Nama Prestasi</label>
                                                             <input type="text" value={ach.name} onChange={e => updateAchievement(i, 'name', e.target.value)} className="w-full p-2 border-b border-gray-200 dark:border-slate-600 bg-transparent outline-none dark:text-white focus:border-blue-500" placeholder="Contoh: OSN Matematika" />
@@ -445,11 +465,11 @@ const SnbpSimulation = () => {
                                                     </div>
                                                 ))}
                                                 <Button onClick={addAchievement} variant="secondary" className="text-sm py-2 w-full mt-4 sm:hidden">
-                                                    <Plus size={16} className="mr-1"/> Tambah Prestasi Lain
+                                                    <Plus size={16} className="mr-1" /> Tambah Prestasi Lain
                                                 </Button>
                                             </div>
                                         )}
-                                        
+
                                         <div className="pt-12">
                                             <Button disabled={!isStepValid} className={`w-full py-5 text-lg font-bold bg-blue-700 hover:bg-blue-800 shadow-xl shadow-blue-700/30 ${!isStepValid ? 'opacity-50 cursor-not-allowed' : ''}`} onClick={calculateResults}>
                                                 Temukan Kampus Cocok
@@ -485,7 +505,7 @@ const SnbpSimulation = () => {
                         <div className="grid lg:grid-cols-2 gap-8 mb-16">
                             <div className="bg-white dark:bg-slate-900 p-8 rounded-3xl shadow-xl shadow-blue-900/5 dark:shadow-blue-900/10 border border-gray-100 dark:border-slate-800">
                                 <h3 className="text-xl font-bold mb-8 text-gray-900 dark:text-white flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center"><User size={20}/></div>
+                                    <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center"><User size={20} /></div>
                                     Ringkasan Profil
                                 </h3>
                                 <div className="space-y-5">
@@ -528,22 +548,22 @@ const SnbpSimulation = () => {
                                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Daftar Rekomendasi</h3>
                                 <div className="h-px flex-1 bg-gray-200 dark:bg-slate-800"></div>
                             </div>
-                            
+
                             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {results.matches.map((m, i) => (
                                     <div key={i} className="bg-white dark:bg-slate-900 p-6 rounded-3xl shadow-sm border border-gray-100 dark:border-slate-800 hover:shadow-2xl hover:shadow-blue-900/10 hover:-translate-y-1 transition-all group">
                                         <div className="flex justify-between items-start mb-6">
-                                            <div className="w-12 h-12 bg-blue-50 dark:bg-slate-800 text-blue-700 dark:text-blue-400 rounded-2xl flex items-center justify-center font-black text-xl group-hover:bg-blue-600 group-hover:text-white transition-colors">{i+1}</div>
+                                            <div className="w-12 h-12 bg-blue-50 dark:bg-slate-800 text-blue-700 dark:text-blue-400 rounded-2xl flex items-center justify-center font-black text-xl group-hover:bg-blue-600 group-hover:text-white transition-colors">{i + 1}</div>
                                             <span className={`text-[10px] px-3 py-1.5 rounded-full font-bold uppercase tracking-widest
-                                                ${m.competitiveness === 'Sangat Kompetitif' ? 'bg-red-50 text-red-600 dark:bg-red-900/30 dark:text-red-400' : 
-                                                  m.competitiveness === 'Kompetitif' ? 'bg-orange-50 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400' : 
-                                                  'bg-green-50 text-green-600 dark:bg-green-900/30 dark:text-green-400'}`}>
+                                                ${m.competitiveness === 'Sangat Kompetitif' ? 'bg-red-50 text-red-600 dark:bg-red-900/30 dark:text-red-400' :
+                                                    m.competitiveness === 'Kompetitif' ? 'bg-orange-50 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400' :
+                                                        'bg-green-50 text-green-600 dark:bg-green-900/30 dark:text-green-400'}`}>
                                                 {m.competitiveness}
                                             </span>
                                         </div>
                                         <h4 className="font-bold text-xl text-gray-900 dark:text-white mb-2 leading-tight">{m.univ}</h4>
                                         <p className="text-sm font-bold text-blue-600 dark:text-blue-400 mb-3">{m.major}</p>
-                                        <p className="text-xs font-medium text-gray-500 dark:text-slate-400 mb-6 flex items-center gap-1"><MapPin size={14} className="text-gray-400"/> {m.city}</p>
+                                        <p className="text-xs font-medium text-gray-500 dark:text-slate-400 mb-6 flex items-center gap-1"><MapPin size={14} className="text-gray-400" /> {m.city}</p>
 
                                     </div>
                                 ))}

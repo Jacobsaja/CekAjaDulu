@@ -98,8 +98,8 @@ const DonationModal = ({ isOpen, onClose }) => {
           {/* QRIS Box */}
           <div className="mb-4 bg-white rounded-xl p-3 sm:p-4 shadow-inner flex flex-col items-center justify-center">
             <img 
-              src="/qris.jpeg" 
-              alt="QRIS Donasi Cekadu" 
+              src="/saweria.png" 
+              alt="QR Code Saweria Cekadu" 
               className="w-full max-w-[200px] h-auto rounded-lg"
               onError={(e) => {
                 e.target.onerror = null;
